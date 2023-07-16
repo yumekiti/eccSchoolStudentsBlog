@@ -8,9 +8,15 @@ const App = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="text-white font-bold text-lg">Logo</div>
-              <input type="text" placeholder="Search" className="bg-gray-200 px-2 py-1 rounded" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="bg-gray-200 px-2 py-1 rounded"
+              />
             </div>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">Create Post</button>
+            <button className="bg-blue-500 text-white px-4 py-2 rounded">
+              Create Post
+            </button>
           </div>
         </div>
       </header>
@@ -23,19 +29,29 @@ const App = () => {
               <nav className="bg-white p-4 rounded">
                 <ul>
                   <li className="mb-2">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded w-full">All</button>
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded w-full">
+                      All
+                    </button>
                   </li>
                   <li className="mb-2">
-                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">Technology</button>
+                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">
+                      Technology
+                    </button>
                   </li>
                   <li className="mb-2">
-                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">Business</button>
+                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">
+                      Business
+                    </button>
                   </li>
                   <li className="mb-2">
-                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">Politics</button>
+                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">
+                      Politics
+                    </button>
                   </li>
                   <li className="mb-2">
-                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">Sports</button>
+                    <button className="bg-white border border-blue-500 text-blue-500 px-4 py-2 rounded w-full">
+                      Sports
+                    </button>
                   </li>
                 </ul>
               </nav>
@@ -72,23 +88,34 @@ const App = () => {
               {/* このサイトについて */}
               <div className="bg-white p-4 rounded">
                 <div className="text-xl font-bold">About</div>
-                <div className="mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</div>
+                <div className="mt-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Quisquam, quos.
+                </div>
               </div>
               {/* 関連リンク */}
               <div className="bg-white p-4 rounded mt-4">
                 <div className="text-xl font-bold">Related Links</div>
                 <ul className="mt-2">
                   <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">Link 1</a>
+                    <a href="#" className="text-blue-500 hover:underline">
+                      Link 1
+                    </a>
                   </li>
                   <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">Link 2</a>
+                    <a href="#" className="text-blue-500 hover:underline">
+                      Link 2
+                    </a>
                   </li>
                   <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">Link 3</a>
+                    <a href="#" className="text-blue-500 hover:underline">
+                      Link 3
+                    </a>
                   </li>
                   <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">Link 4</a>
+                    <a href="#" className="text-blue-500 hover:underline">
+                      Link 4
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -104,6 +131,6 @@ const App = () => {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
