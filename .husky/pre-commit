@@ -3,3 +3,5 @@
 
 yarn lint:fix
 yarn format
+
+git add .
