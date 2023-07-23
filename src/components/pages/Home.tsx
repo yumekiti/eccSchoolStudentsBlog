@@ -10,6 +10,11 @@ import PersonSearchIcon from '../../assets/navigation/PersonSearchIcon';
 import BookmarkIcon from '../../assets/navigation/BookmarkIcon';
 import InfoIcon from '../../assets/navigation/InfoIcon';
 
+import TagIcon from '../../assets/elements/TagIcon';
+import LikeIcon from '../../assets/elements/LikeIcon';
+import BookmarkBorderIcon from '../../assets/elements/BookmarkBorderIcon';
+// import BookmarkIcon from '../../assets/elements/BookmarkIcon';
+
 const Home = () => {
   return (
     <div className="App h-screen flex flex-col bg-Background">
@@ -44,7 +49,7 @@ const Home = () => {
       <main className="flex-grow bg-gray-100 p-2">
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-4 px-2">
-            <div className="col-span-12 lg:col-span-3">
+            <div className="col-span-12 lg:col-span-2">
               <nav className="py-2">
                 <ul>
                   <li className="flex items-center group">
@@ -116,30 +121,55 @@ const Home = () => {
               </nav>
             </div>
             {/* ブログリスト */}
-            <div className="col-span-12 lg:col-span-6">
-              <div className="bg-white p-4 rounded">
-                <div className="flex items-center space-x-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="bg-gray-200 w-10 h-10 rounded-full"></div>
-                    <div className="font-bold">Username</div>
+            <div className="col-span-12 lg:col-span-7 py-2 hover:cursor-pointer">
+              <div className="bg-Main p-4 rounded">
+                {/* ユーザー */}
+                <div className="flex items-center space-x-1">
+                  <div className="bg-Highlight w-8 h-8 rounded-full"></div>
+                  <div className="flex flex-col text-SubHeadline text-sm">
+                    <p className="px-1 w-fit font-bold tracking-wide hover:text-Headline hover:bg-SubHeadline hover:bg-opacity-20 rounded">
+                      @user_id
+                    </p>
+                    <p className="px-1">2023/07/15</p>
                   </div>
-                  <div className="text-gray-500">1 hour ago</div>
                 </div>
-                <div className="text-xl font-bold mt-2">Title</div>
-                {/* Favorite border & Tags & Bookmark border */}
-                <div className="flex items-center justify-between mt-2">
-                  <div className="flex items-start flex-col">
-                    {/* Favorite */}
-                    <div className="text-gray-500">10 likes</div>
-                    {/* Tags */}
-                    <div className="flex items-center space-x-2">
-                      <div className="bg-gray-200 px-2 py-1 rounded">Tag 1</div>
-                      <div className="bg-gray-200 px-2 py-1 rounded">Tag 2</div>
-                      <div className="bg-gray-200 px-2 py-1 rounded">Tag 3</div>
+                <div className="mt-2 px-10">
+                  {/* タイトル */}
+                  <p className="text-xl text-Headline break-all text-justify font-bold line-clamp-3 hover:text-Highlight">
+                    ECCコンピュータ専門学校っていうコンピュータ学校なのに、学生用ブログ無いってよwwwしゃーないから作ってやったわwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+                  </p>
+                  {/* Favorite border & Tags & Bookmark border */}
+                  <div className="flex justify-between">
+                    <div className="flex flex-col">
+                      {/* Tags */}
+                      <div className="flex items-center">
+                        <TagIcon />
+                        <ul className="text-SubHeadline flex items-center space-x-1">
+                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                            #Tag 1
+                          </li>
+                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                            #Tag 2
+                          </li>
+                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                            #Tag 3
+                          </li>
+                        </ul>
+                      </div>
+                      {/* Favorite */}
+                      <div className="mt-2 flex space-x-1">
+                        <LikeIcon />
+                        <span className="text-SubHeadline text-sm">10</span>
+                      </div>
+                    </div>
+                    {/* Bookmark */}
+                    <div className="flex items-end">
+                      <button className="hover:bg-Highlight hover:bg-opacity-30 rounded p-1">
+                        <BookmarkBorderIcon />
+                      </button>
+                      {/* <BookmarkIcon /> */}
                     </div>
                   </div>
-                  {/* Bookmark */}
-                  <div className="text-gray-500">Bookmark</div>
                 </div>
               </div>
             </div>
