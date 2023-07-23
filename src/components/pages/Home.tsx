@@ -15,6 +15,9 @@ import LikeIcon from '../../assets/elements/LikeIcon';
 import BookmarkBorderIcon from '../../assets/elements/BookmarkBorderIcon';
 // import BookmarkIcon from '../../assets/elements/BookmarkIcon';
 
+import WelcomeIcon from '../../assets/elements/WelcomeIcon';
+import LinkIcon from '../../assets/elements/LinkIcon';
+
 const Home = () => {
   return (
     <div className="App h-screen flex flex-col bg-Background">
@@ -57,7 +60,7 @@ const Home = () => {
                       <div className="px-2">
                         <HomeIcon />
                       </div>
-                      <p className="font-bold group-hover:text-Highlight group-hover:underline">
+                      <p className="text-Headline font-bold group-hover:text-Highlight group-hover:underline">
                         ホーム
                       </p>
                     </button>
@@ -67,7 +70,7 @@ const Home = () => {
                       <div className="px-2">
                         <HelpIcon />
                       </div>
-                      <p className="font-bold group-hover:text-Highlight group-hover:underline">
+                      <p className="text-Headline font-bold group-hover:text-Highlight group-hover:underline">
                         質問
                       </p>
                     </button>
@@ -77,7 +80,7 @@ const Home = () => {
                       <div className="px-2">
                         <PersonSearchIcon />
                       </div>
-                      <p className="font-bold group-hover:text-Highlight group-hover:underline">
+                      <p className="text-Headline font-bold group-hover:text-Highlight group-hover:underline">
                         募集
                       </p>
                     </button>
@@ -87,7 +90,7 @@ const Home = () => {
                       <div className="px-2">
                         <BookmarkIcon />
                       </div>
-                      <p className="font-bold group-hover:text-Highlight group-hover:underline">
+                      <p className="text-Headline font-bold group-hover:text-Highlight group-hover:underline">
                         ブックマーク
                       </p>
                     </button>
@@ -97,7 +100,7 @@ const Home = () => {
                       <div className="px-2">
                         <InfoIcon />
                       </div>
-                      <p className="font-bold group-hover:text-Highlight group-hover:underline">
+                      <p className="text-Headline font-bold group-hover:text-Highlight group-hover:underline">
                         Info
                       </p>
                     </button>
@@ -112,7 +115,7 @@ const Home = () => {
                       <div className="px-2">
                         <InfoIcon />
                       </div>
-                      <p className="group-hover:text-Highlight group-hover:underline">
+                      <p className="text-SubHeadline group-hover:text-Highlight group-hover:underline">
                         IoT
                       </p>
                     </button>
@@ -144,14 +147,14 @@ const Home = () => {
                       {/* Tags */}
                       <div className="flex items-center">
                         <TagIcon />
-                        <ul className="text-SubHeadline flex items-center space-x-1">
-                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                        <ul className="flex items-center space-x-1 ml-2">
+                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
                             #Tag 1
                           </li>
-                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
                             #Tag 2
                           </li>
-                          <li className="hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
                             #Tag 3
                           </li>
                         </ul>
@@ -175,38 +178,44 @@ const Home = () => {
             </div>
             <div className="hidden lg:col-span-3 lg:block">
               {/* このサイトについて */}
-              <div className="bg-white p-4 rounded">
-                <div className="text-xl font-bold">About</div>
-                <div className="mt-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quisquam, quos.
+              <div className="py-2">
+                <div className="bg-Main p-4 rounded">
+                  <div className="py-2 flex items-center space-x-2 justify-center">
+                    <WelcomeIcon />
+                    <span className="text-xl font-bold text-center text-Headline">
+                      Welcome
+                    </span>
+                  </div>
+                  <div className="mt-2 text-justify whitespace-pre-wrap text-SubHeadline px-4">
+                    {
+                      'ようこそ、コンピュータ専門学校の技術ブログへ！\n\n学生の情報資産を残すことを目標に、最新の情報技術を共有します。'
+                    }
+                  </div>
                 </div>
               </div>
               {/* 関連リンク */}
-              <div className="bg-white p-4 rounded mt-4">
-                <div className="text-xl font-bold">Related Links</div>
-                <ul className="mt-2">
-                  <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">
-                      Link 1
-                    </a>
-                  </li>
-                  <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">
-                      Link 2
-                    </a>
-                  </li>
-                  <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">
-                      Link 3
-                    </a>
-                  </li>
-                  <li className="mb-2">
-                    <a href="#" className="text-blue-500 hover:underline">
-                      Link 4
-                    </a>
-                  </li>
-                </ul>
+              <div className="py-2">
+                <div className="bg-Main p-4 rounded">
+                  <div className="py-2 flex items-center space-x-2 justify-center">
+                    <LinkIcon />
+                    <span className="text-xl font-bold text-center text-Headline">
+                      Links
+                    </span>
+                  </div>
+
+                  <ul>
+                    <li className="flex items-center group">
+                      <button className="flex items-center pr-4 py-2 w-full text-Headline rounded group-hover:bg-Highlight group-hover:bg-opacity-30">
+                        <div className="px-2">
+                          <InfoIcon />
+                        </div>
+                        <p className="text-SubHeadline group-hover:text-Highlight group-hover:underline">
+                          公式サイト
+                        </p>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
