@@ -28,7 +28,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <button className="border border-Highlight text-Highlight px-4 py-2 rounded">
+          <button className="border border-Highlight text-Highlight px-4 py-2 rounded hover:bg-Highlight hover:text-Main hover:underline underline-Main">
             Create Post
           </button>
         </div>
