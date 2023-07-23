@@ -224,7 +224,7 @@ const Home = () => {
 
       <footer className="bg-Main p-2">
         <div className="container mx-auto">
-          &copy; 2023 - Copyright Yumekiti.
+          <span className="px-2">&copy; 2023 - Copyright Yumekiti.</span>
         </div>
       </footer>
     </div>
