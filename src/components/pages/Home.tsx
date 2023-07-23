@@ -1,32 +1,45 @@
 import React from 'react';
 
+import Logo from '../../assets/elements/Logo';
+import SearchIcon from '../../assets/elements/SearchIcon';
+import SearchIconFocus from '../../assets/elements/SearchIconFocus';
+
 const Home = () => {
   return (
-    <div className="App h-screen flex flex-col">
-      <header className="bg-gray-800 p-4">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="text-white font-bold text-lg">Logo</div>
+    <div className="App h-screen flex flex-col bg-Background">
+      <header className="bg-Main p-2 border-b border-Headline">
+        <div className="container mx-auto flex items-center justify-between px-2">
+          <div className="flex items-center space-x-4">
+            <Logo />
+            <div className="flex items-center rounded border border-Headline group">
+              {/* icon */}
               <input
                 type="text"
                 placeholder="Search"
-                className="bg-gray-200 px-2 py-1 rounded"
+                className="px-2 placeholder-SubHeadline outline-none w-96 leading-3"
               />
+              <button className="p-2 flex items-center justify-center bg-Main group-hover:bg-Headline">
+                <div className="hidden group-hover:block">
+                  <SearchIcon />
+                </div>
+                <div className="group-hover:hidden">
+                  <SearchIconFocus />
+                </div>
+              </button>
             </div>
-            <button className="bg-blue-500 text-white px-4 py-2 rounded">
-              Create Post
-            </button>
           </div>
+          <button className="border border-Highlight text-Highlight px-4 py-2 rounded">
+            Create Post
+          </button>
         </div>
       </header>
 
-      <main className="flex-grow bg-gray-100 p-4">
+      <main className="flex-grow bg-gray-100 p-2">
         <div className="container mx-auto">
           <div className="grid grid-cols-12 gap-4">
             {/* フィルタリング */}
             <div className="col-span-12 lg:col-span-3">
-              <nav className="bg-white p-4 rounded">
+              <nav className="bg-white p-2 rounded">
                 <ul>
                   <li className="mb-2">
                     <button className="bg-blue-500 text-white px-4 py-2 rounded w-full">

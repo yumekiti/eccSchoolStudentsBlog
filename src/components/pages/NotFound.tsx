@@ -1,5 +1,5 @@
 import React from 'react';
-import NotFoundIcon from './../../assets/NotFoundIcon';
+import NotFoundIcon from './../../assets/elements/NotFoundIcon';
 
 const NotFound = () => {
   return (
