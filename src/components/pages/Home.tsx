@@ -20,7 +20,7 @@ import LinkIcon from '../../assets/elements/LinkIcon';
 
 const Home = () => {
   return (
-    <div className="App h-screen flex flex-col bg-Background">
+    <div className="App h-screen flex flex-col">
       <header className="bg-Main p-2 border-b border-Headline">
         <div className="container mx-auto">
           <div className="px-2 flex items-center justify-between">
@@ -124,55 +124,64 @@ const Home = () => {
               </nav>
             </div>
             {/* ブログリスト */}
-            <div className="col-span-12 lg:col-span-7 py-2 hover:cursor-pointer">
-              <div className="bg-Main p-4 rounded">
-                {/* ユーザー */}
-                <div className="flex items-center space-x-1">
-                  <div className="bg-Highlight w-8 h-8 rounded-full"></div>
-                  <div className="flex flex-col text-SubHeadline text-sm">
-                    <p className="px-1 w-fit font-bold tracking-wide hover:text-Headline hover:bg-SubHeadline hover:bg-opacity-20 rounded">
-                      @user_id
+            <div className="col-span-12 lg:col-span-7">
+              <div className="py-2">
+                <div className="bg-Main p-4 rounded hover:cursor-pointer">
+                  {/* ユーザー */}
+                  <div className="flex items-center space-x-1">
+                    <div className="bg-Highlight w-8 h-8 rounded-full"></div>
+                    <div className="flex flex-col text-SubHeadline text-sm">
+                      <p className="px-1 w-fit font-bold tracking-wide hover:text-Headline hover:bg-SubHeadline hover:bg-opacity-20 rounded">
+                        @user_id
+                      </p>
+                      <p className="px-1">2023/07/15</p>
+                    </div>
+                  </div>
+                  <div className="mt-2 px-10">
+                    {/* タイトル */}
+                    <p className="text-xl text-Headline break-all text-justify font-bold line-clamp-3 hover:text-Highlight">
+                      ECCコンピュータ専門学校っていうコンピュータ学校なのに、学生用ブログ無いってよwwwしゃーないから作ってやったわwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
                     </p>
-                    <p className="px-1">2023/07/15</p>
+                    {/* Favorite border & Tags & Bookmark border */}
+                    <div className="flex justify-between">
+                      <div className="flex flex-col">
+                        {/* Tags */}
+                        <div className="flex items-center">
+                          <TagIcon />
+                          <ul className="flex items-center space-x-1 ml-2">
+                            <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                              #Tag 1
+                            </li>
+                            <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                              #Tag 2
+                            </li>
+                            <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
+                              #Tag 3
+                            </li>
+                          </ul>
+                        </div>
+                        {/* Favorite */}
+                        <div className="mt-2 flex space-x-1">
+                          <LikeIcon />
+                          <span className="text-SubHeadline text-sm">10</span>
+                        </div>
+                      </div>
+                      {/* Bookmark */}
+                      <div className="flex items-end">
+                        <button className="hover:bg-Highlight hover:bg-opacity-30 rounded p-1">
+                          <BookmarkBorderIcon />
+                        </button>
+                        {/* <BookmarkIcon /> */}
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-2 px-10">
-                  {/* タイトル */}
-                  <p className="text-xl text-Headline break-all text-justify font-bold line-clamp-3 hover:text-Highlight">
-                    ECCコンピュータ専門学校っていうコンピュータ学校なのに、学生用ブログ無いってよwwwしゃーないから作ってやったわwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-                  </p>
-                  {/* Favorite border & Tags & Bookmark border */}
-                  <div className="flex justify-between">
-                    <div className="flex flex-col">
-                      {/* Tags */}
-                      <div className="flex items-center">
-                        <TagIcon />
-                        <ul className="flex items-center space-x-1 ml-2">
-                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
-                            #Tag 1
-                          </li>
-                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
-                            #Tag 2
-                          </li>
-                          <li className="text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-20 rounded p-1 text-sm hover:outline outline-1 outline-SubHeadline">
-                            #Tag 3
-                          </li>
-                        </ul>
-                      </div>
-                      {/* Favorite */}
-                      <div className="mt-2 flex space-x-1">
-                        <LikeIcon />
-                        <span className="text-SubHeadline text-sm">10</span>
-                      </div>
-                    </div>
-                    {/* Bookmark */}
-                    <div className="flex items-end">
-                      <button className="hover:bg-Highlight hover:bg-opacity-30 rounded p-1">
-                        <BookmarkBorderIcon />
-                      </button>
-                      {/* <BookmarkIcon /> */}
-                    </div>
-                  </div>
+              </div>
+              <div className="py-2">
+                <div className="flex items-center justify-center">
+                  <button className="bg-Main py-2 px-16 rounded text-Headline hover:bg-SubHeadline hover:bg-opacity-20 outline outline-1 outline-SubHeadline">
+                    もっと読む
+                  </button>
                 </div>
               </div>
             </div>
