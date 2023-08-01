@@ -9,6 +9,7 @@ import HelpIcon from '../../assets/navigation/HelpIcon';
 import PersonSearchIcon from '../../assets/navigation/PersonSearchIcon';
 import BookmarkIcon from '../../assets/navigation/BookmarkIcon';
 import InfoIcon from '../../assets/navigation/InfoIcon';
+import HamburgerMenuIcon from '../../assets/navigation/HamburgerMenuIcon';
 
 import TagIcon from '../../assets/elements/TagIcon';
 import LikeIcon from '../../assets/elements/LikeIcon';
@@ -22,11 +23,18 @@ const Home = () => {
   return (
     <div className="App h-screen flex flex-col">
       <header className="bg-Main p-2 border-b border-Headline">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="px-2 flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Logo />
-              <div className="items-center rounded border border-Headline group hidden lg:flex">
+            <div className="flex items-center">
+              <div className="block md:hidden">
+                <button className="hover:bg-Highlight hover:bg-opacity-30 rounded p-2">
+                  <HamburgerMenuIcon />
+                </button>
+              </div>
+              <div className="ml-2 md:m-0">
+                <Logo />
+              </div>
+              <div className="items-center rounded border border-Headline group hidden md:flex ml-4">
                 <input
                   type="text"
                   placeholder="Search"
@@ -42,17 +50,24 @@ const Home = () => {
                 </button>
               </div>
             </div>
-            <button className="border border-Highlight text-Highlight px-4 py-2 rounded hover:bg-Highlight hover:text-Main hover:underline">
-              Create Post
-            </button>
+            <div className="flex items-center">
+              <div className="block md:hidden">
+                <button className="hover:bg-Highlight hover:bg-opacity-30 rounded p-2">
+                  <SearchIconFocus />
+                </button>
+              </div>
+              <button className="ml-2 border border-Highlight text-Highlight px-4 py-2 rounded hover:bg-Highlight hover:text-Main hover:underline">
+                Create Post
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       <main className="flex-grow bg-gray-100 p-2">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-12 gap-4 px-2">
-            <div className="col-span-12 lg:col-span-2">
+            <div className="hidden md:block md:col-span-3 lg:col-span-2">
               <nav className="py-2">
                 <ul>
                   <li className="flex items-center group">
@@ -124,7 +139,7 @@ const Home = () => {
               </nav>
             </div>
             {/* ブログリスト */}
-            <div className="col-span-12 lg:col-span-7">
+            <div className="col-span-12 md:col-span-9 lg:col-span-7">
               <div className="py-2">
                 <div className="bg-Main p-4 rounded hover:cursor-pointer">
                   {/* ユーザー */}
@@ -185,6 +200,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
             <div className="hidden lg:col-span-3 lg:block">
               {/* このサイトについて */}
               <div className="py-2">
@@ -232,7 +248,7 @@ const Home = () => {
       </main>
 
       <footer className="bg-Main p-2">
-        <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto">
           <span className="px-2">&copy; 2023 - Copyright Yumekiti.</span>
         </div>
       </footer>
