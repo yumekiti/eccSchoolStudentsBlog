@@ -12,7 +12,7 @@ const Component: React.FC<Props> = ({ Icon, Text, Bold = false }) => (
       <Icon />
     </div>
     <p
-      className={`text-Headline group-hover:text-Highlight group-hover:underline ${
+      className={`whitespace-nowrap text-Headline group-hover:text-Highlight group-hover:underline ${
         Bold ? 'font-bold' : ''
       }`}
     >

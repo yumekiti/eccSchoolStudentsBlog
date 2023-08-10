@@ -4,7 +4,7 @@ import ButtonWithIcon from '../atoms/ButtonWithIcon';
 import TagList from '../molecules/TagList';
 import TagIcon from '../../assets/elements/TagIcon';
 import LikeIcon from '../../assets/elements/LikeIcon';
-import BookmarkBorderIcon from '../../assets/elements/BookmarkBorderIcon';
+import BookmarkIcon from '../../assets/elements/BookmarkIcon';
 
 type Props = {
   user_id: string;
@@ -47,7 +47,7 @@ const Component: React.FC<Props> = ({ user_id, date, title, tags, likes }) => (
               <span className="text-SubHeadline text-sm">{likes}</span>
             </div>
             <div className="w-fit">
-              <ButtonWithIcon Icon={BookmarkBorderIcon} />
+              <ButtonWithIcon Icon={BookmarkIcon} AriaLabel="BookmarkButton" />
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Component: React.FC<Props> = ({ children }) => {
   return (
     <div className="App h-screen flex flex-col">
       <Header />
-      <main className="h-full">{children}</main>
+      <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   );

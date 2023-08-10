@@ -13,7 +13,7 @@ module.exports = {
       CardParagraph: '#5f6c7b',
       Stroke: '#094067',
       Main: '#fffffe',
-      Highlight: '#3da9fc',
+      Highlight: '#005694',
       Secondary: '#90b4ce',
       Tertiary: '#ef4565'
     },
