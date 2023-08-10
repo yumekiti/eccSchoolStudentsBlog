@@ -10,7 +10,10 @@ const Component: React.FC = () => (
       placeholder="Search"
       className="px-2 placeholder-SubHeadline outline-none w-96 leading-3"
     />
-    <button className="p-2 flex items-center justify-center bg-Main group-hover:bg-Headline">
+    <button
+      className="p-2 flex items-center justify-center bg-Main group-hover:bg-Headline"
+      aria-label="SearchButton"
+    >
       <div className="hidden group-hover:block">
         <SearchIcon />
       </div>
