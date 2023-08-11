@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import ButtonWithIcon from '../atoms/ButtonWithIcon';
-import HighlightButton from '../atoms/HighlightButton';
+import ContrastButton from '../atoms/ContrastButton';
 
 import SearchBox from '../molecules/SearchBox';
 
@@ -21,9 +22,9 @@ const Component = () => (
               AriaLabel="HamburgerMenuButton"
             />
           </div>
-          <div className="ml-2 md:m-0 cursor-pointer">
+          <Link to="/" className="ml-2 md:m-0 cursor-pointer">
             <Logo />
-          </div>
+          </Link>
           <div className="hidden md:flex">
             <SearchBox />
           </div>
@@ -32,7 +33,7 @@ const Component = () => (
           <div className="block md:hidden">
             <ButtonWithIcon Icon={SearchIcon} AriaLabel="SearchButton" />
           </div>
-          <HighlightButton Text="Create Post" />
+          <ContrastButton Text="Create Post" />
         </div>
       </div>
     </div>

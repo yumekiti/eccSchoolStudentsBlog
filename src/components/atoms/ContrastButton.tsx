@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Component: React.FC<Props> = ({ Text }) => (
-  <button className="ml-2 border border-Highlight text-Highlight px-4 py-2 rounded hover:bg-Highlight hover:text-Main hover:underline">
+  <button className="ml-2 border border-Contrast text-Contrast px-4 py-2 rounded hover:bg-Contrast hover:text-Main hover:underline">
     {Text}
   </button>
 );

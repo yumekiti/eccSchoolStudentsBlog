@@ -1,16 +1,35 @@
 import React from 'react';
-
 import BlogItem from '../molecules/BlogItem';
 
-const Component: React.FC = () => (
+type Page = {
+  _id: string;
+  path: string;
+  createdAt: string;
+  liker: Array<string>;
+  lastUpdateUser: {
+    imageUrlCached: string;
+    username: string;
+  };
+};
+
+type Props = {
+  pages: Page[];
+};
+
+const Component: React.FC<Props> = ({ pages }) => (
   <>
-    <BlogItem
-      user_id="user_id"
-      date="2021/01/01"
-      title="ECCコンピュータ専門学校っていうコンピュータ学校なのに、学生用ブログ無いってよwwwしゃーないから作ってやったわwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww"
-      tags={['IoT', 'C++', 'C#', 'Java', 'Python', 'JavaScript', 'HTML', 'CSS']}
-      likes={10}
-    />
+    {pages.map((page, index) => (
+      <div className="py-2" key={index}>
+        <BlogItem
+          id={page._id}
+          user_id={page.lastUpdateUser.username}
+          user_image={page.lastUpdateUser.imageUrlCached}
+          date={page.createdAt}
+          title={page.path.split('_')[1]}
+          likes={page.liker.length}
+        />
+      </div>
+    ))}
     <div className="py-2">
       <div className="flex items-center justify-center">
         <button className="bg-Main py-2 px-16 rounded text-Headline hover:bg-SubHeadline hover:bg-opacity-20 outline outline-1 outline-SubHeadline">
