@@ -39,7 +39,7 @@ const Component: React.FC<Props> = ({ path }) => {
           />
         </div>
       ))}
-      <div className={`py-2 ${!isLast ? 'hidden' : ''}`}>
+      <div className={`py-2 ${isLast ? 'hidden' : ''}`}>
         <div className="flex items-center justify-center">
           <button
             className="bg-Main py-2 px-16 rounded text-Headline hover:bg-SubHeadline hover:bg-opacity-20 outline outline-1 outline-SubHeadline"

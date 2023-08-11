@@ -1,12 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 import Layout from '../templates/Layout';
 
-import BlogContent from '../molecules/BlogContent';
 import CounterButtonGroup from '../organisms/CounterButtonGroup';
+import Blog from '../organisms/Blog';
 import ContentList from '../organisms/ContentList';
 
 const Component = () => {
+  const { id } = useParams<{ id: string }>();
+
   return (
     <Layout>
       <div className="p-0 md:p-2 max-w-7xl mx-auto">
@@ -16,8 +19,8 @@ const Component = () => {
               <CounterButtonGroup />
             </div>
           </div>
-          <div className="col-span-12 md:col-span-9 lg:col-span-8">
-            <BlogContent />
+          <div className="col-span-12 md:col-span-9 lg:col-span-8 mb-12">
+            <Blog id={id} />
           </div>
 
           <div className="hidden lg:col-span-3 lg:block">
