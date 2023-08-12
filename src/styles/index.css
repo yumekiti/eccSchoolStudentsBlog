@@ -9,3 +9,7 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #d8eefe;
 }
+
+html {
+  scroll-behavior: smooth;
+}

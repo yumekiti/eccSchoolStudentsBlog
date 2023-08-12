@@ -8,9 +8,12 @@ type Props = {
 };
 
 const Component: React.FC<Props> = ({ id }) => {
-  const { data, error } = useSWR<Tags>(`/_api/pages.getPageTag?pageId=${id}`);
+  const { data, error, isLoading } = useSWR<Tags>(
+    `/_api/pages.getPageTag?pageId=${id}`,
+  );
 
   if (error) return <div>Error</div>;
+  if (isLoading) return <div>Loading...</div>;
 
   const handleClick = (tag: Tag) => {
     window.location.href =
@@ -20,6 +23,7 @@ const Component: React.FC<Props> = ({ id }) => {
   return (
     <ul className="flex items-center flex-wrap ml-2">
       {data &&
+        data.tags &&
         data.tags.map((tag, index: number) => (
           <li
             key={index}

@@ -21,9 +21,7 @@ const Component: React.FC<Props> = ({ path }) => {
   const isMore = data && pages.length != data.pages.length * page;
   const isLast = data && pages.length != data.totalCount;
 
-  if (isMore && isLast) {
-    setPages([...pages, ...data.pages]);
-  }
+  if (isMore && isLast) setPages([...pages, ...data.pages]);
 
   return (
     <>
