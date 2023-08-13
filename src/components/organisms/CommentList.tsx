@@ -17,10 +17,14 @@ type Props = {
 const Component: React.FC<Props> = ({ id }) => {
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState<Comments>([]);
+  const [commentCount, setCommentCount] = useState<number>(0);
   const { data, error } = useSWR(`/_api/comments.get?page_id=${id}`);
 
   if (error) return <div>Error</div>;
-  if (data && comments.length === 0) setComments(data.comments);
+  if (data && commentCount !== data.comments.length) {
+    setComments(data.comments);
+    setCommentCount(data.comments.length);
+  }
 
   const handleComment = () => {
     const data = {
@@ -71,7 +75,6 @@ const Component: React.FC<Props> = ({ id }) => {
         </div>
         <div id="comment" className="flex flex-col">
           <textarea
-            id="comment"
             className="border border-SubHeadline rounded p-2"
             rows={5}
             placeholder="コメントを入力してください。"

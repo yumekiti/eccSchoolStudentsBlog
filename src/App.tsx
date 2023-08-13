@@ -19,6 +19,13 @@ const App = () => {
     >
       <Routes>
         <Route path="/" element={<List path="content" />} />
+        <Route path="/question" element={<List path="question" />} />
+        <Route path="/recruit" element={<List path="recruit" />} />
+        <Route path="/it" element={<List path="content%2FIT" />} />
+        <Route path="/it/ai" element={<List path="content/IT/ai" />} />
+        <Route path="/it/nw_sec" element={<List path="content/IT/nw_sec" />} />
+        <Route path="/it/iot" element={<List path="content/IT/iot" />} />
+        <Route path="/it/design" element={<List path="content/IT/design" />} />
         <Route path="/:id" element={<Detail />} />
       </Routes>
     </SWRConfig>

@@ -16,7 +16,9 @@ const Component: React.FC = () => (
 
       <ul>
         <li className="flex items-center">
-          <LinkButton Icon={InfoIcon} text="公式サイト" />
+          <a href="https://comp.ecc.ac.jp/" target="blank" className="w-full">
+            <LinkButton Icon={InfoIcon} text="公式サイト" />
+          </a>
         </li>
       </ul>
     </div>

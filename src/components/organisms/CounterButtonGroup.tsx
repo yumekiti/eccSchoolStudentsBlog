@@ -18,7 +18,7 @@ const Component: React.FC<Props> = ({ id, like, comment }) => (
       >
         <LikeIcon />
       </a>
-      <span className="mt-1 text-SubHeadline">{like}</span>
+      <span className="mt-1 text-Contrast">{like}</span>
     </li>
     <li className="flex md:flex-col items-center">
       <a
@@ -27,7 +27,7 @@ const Component: React.FC<Props> = ({ id, like, comment }) => (
       >
         <CommentIcon />
       </a>
-      <span className="mt-1 text-SubHeadline">{comment}</span>
+      <span className="mt-1 text-Contrast">{comment}</span>
     </li>
   </ul>
 );

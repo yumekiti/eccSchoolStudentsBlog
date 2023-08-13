@@ -23,7 +23,7 @@ const Component: React.FC<Props> = ({
   title,
   likes,
 }) => (
-  <Link to={id}>
+  <Link to={`/${id}`}>
     <div className="bg-Main p-4 rounded hover:cursor-pointer group">
       <div className="flex items-center space-x-1">
         <img
