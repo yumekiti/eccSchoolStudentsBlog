@@ -10,4 +10,6 @@ export type Blog = {
   revision: {
     body: string;
   };
+  liker: Array<string>;
+  commentCount: number;
 };

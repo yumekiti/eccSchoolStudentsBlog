@@ -29,8 +29,14 @@ const Component: React.FC<Props> = ({ path }) => {
         <div className="py-2" key={index}>
           <BlogItem
             id={page._id}
-            user_id={page.lastUpdateUser.username}
-            user_image={page.lastUpdateUser.imageUrlCached}
+            user_id={
+              page.lastUpdateUser ? page.lastUpdateUser.username : 'unknown'
+            }
+            user_image={
+              page.lastUpdateUser
+                ? page.lastUpdateUser.imageUrlCached
+                : '/images/icons/user.svg'
+            }
             date={page.createdAt}
             title={page.path.split('_')[1]}
             likes={page.liker.length}

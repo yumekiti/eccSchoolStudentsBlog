@@ -2,13 +2,13 @@ import React from 'react';
 
 type Props = {
   Icon: React.FC;
-  AriaLabel: string;
+  aria_label: string;
 };
 
-const Component: React.FC<Props> = ({ Icon, AriaLabel }) => (
+const Component: React.FC<Props> = ({ Icon, aria_label }) => (
   <button
     className="hover:bg-Highlight hover:bg-opacity-30 rounded p-2"
-    aria-label={AriaLabel}
+    aria-label={aria_label}
   >
     <Icon />
   </button>

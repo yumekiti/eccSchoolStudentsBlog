@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { format } from 'date-fns';
 
 import TagList from '../molecules/TagList';
 import TagIcon from '../../assets/elements/TagIcon';
@@ -9,8 +10,8 @@ type Props = {
   id: string;
   user_id: string;
   user_image: string;
-  created_at: string;
-  updated_at: string;
+  created_at: Date;
+  updated_at: Date;
   title: string;
   content: string;
 };
@@ -35,7 +36,8 @@ const Component: React.FC<Props> = ({
         <div className="flex flex-col text-SubHeadline text-xs md:text-sm">
           <p className="px-1 w-fit font-bold tracking-wide">@{user_id}</p>
           <p className="px-1">
-            {created_at}&nbsp;{updated_at}
+            UpdateAt&nbsp;{format(updated_at, 'yyyy/MM/dd')}&nbsp;CreateAt&nbsp;
+            {format(created_at, 'yyyy/MM/dd')}
           </p>
         </div>
       </div>

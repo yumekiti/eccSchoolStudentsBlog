@@ -17,7 +17,7 @@ const Component: React.FC<Props> = ({ content }) => {
         <div className="py-2 flex items-center space-x-2 justify-center">
           <ListIcon />
           <span className="text-xl font-bold text-center text-Headline">
-            Contents
+            目次
           </span>
         </div>
         <div className="mt-2 text-justify whitespace-pre-wrap text-SubHeadline px-8">

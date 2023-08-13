@@ -8,7 +8,7 @@ const Component: React.FC = () => (
     <h2 className="text-Headline font-bold p-2">分野</h2>
     <ul>
       <li className="flex items-center">
-        <LinkButton Icon={IoTIcon} Text="IoT" />
+        <LinkButton Icon={IoTIcon} text="IoT" />
       </li>
     </ul>
   </nav>

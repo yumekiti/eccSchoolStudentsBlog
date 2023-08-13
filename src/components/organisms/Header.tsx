@@ -19,7 +19,7 @@ const Component = () => (
           <div className="block md:hidden">
             <ButtonWithIcon
               Icon={HamburgerMenuIcon}
-              AriaLabel="HamburgerMenuButton"
+              aria_label="HamburgerMenuButton"
             />
           </div>
           <Link to="/" className="ml-2 md:m-0 cursor-pointer">
@@ -31,9 +31,14 @@ const Component = () => (
         </div>
         <div className="flex items-center">
           <div className="block md:hidden">
-            <ButtonWithIcon Icon={SearchIcon} AriaLabel="SearchButton" />
+            <ButtonWithIcon Icon={SearchIcon} aria_label="SearchButton" />
           </div>
-          <ContrastButton Text="Create Post" />
+          <ContrastButton
+            text="Create Post"
+            onClick={() => {
+              console.log('Create Post');
+            }}
+          />
         </div>
       </div>
     </div>

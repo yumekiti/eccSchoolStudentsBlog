@@ -15,7 +15,7 @@ const Component: React.FC<Props> = ({ path }) => {
   return (
     <Layout>
       <div className="p-0 md:p-2 max-w-7xl mx-auto">
-        <div className="grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12 gap-4 px-2 md:p-0">
           <div className="hidden md:block md:col-span-3 lg:col-span-2">
             <NavigationMenu />
           </div>

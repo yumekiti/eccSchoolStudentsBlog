@@ -12,19 +12,19 @@ const Component: React.FC = () => (
   <nav className="py-2">
     <ul>
       <li className="flex items-center">
-        <LinkButton Icon={HomeIcon} Text="ホーム" Bold />
+        <LinkButton Icon={HomeIcon} text="ホーム" bold />
       </li>
       <li className="flex items-center">
-        <LinkButton Icon={HelpIcon} Text="質問" Bold />
+        <LinkButton Icon={HelpIcon} text="質問" bold />
       </li>
       <li className="flex items-center">
-        <LinkButton Icon={PersonSearchIcon} Text="募集" Bold />
+        <LinkButton Icon={PersonSearchIcon} text="募集" bold />
       </li>
       <li className="flex items-center">
-        <LinkButton Icon={BookmarkIcon} Text="ブックマーク" Bold />
+        <LinkButton Icon={BookmarkIcon} text="ブックマーク" bold />
       </li>
       <li className="flex items-center">
-        <LinkButton Icon={InfoIcon} Text="Info" Bold />
+        <LinkButton Icon={InfoIcon} text="Info" bold />
       </li>
     </ul>
   </nav>
