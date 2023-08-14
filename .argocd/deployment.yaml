@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecc-blog
+  namespace: ecc-blog
+spec:
+  selector:
+    matchLabels:
+      app: ecc-blog
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ecc-blog
+    spec:
+      containers:
+      - name: ecc-blog
+        image: yumekiti/ecc-blog:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecc-blog
+  namespace: ecc-blog
+spec:
+  selector:
+    app: ecc-blog
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: NodePort
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ecc-blog
+  namespace: ecc-blog
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: blog.ecc-comp.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ecc-blog
+            port:
+              number: 80
