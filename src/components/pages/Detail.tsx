@@ -11,7 +11,9 @@ import CommentList from '../organisms/CommentList';
 
 const Component = () => {
   const { id } = useParams<{ id: string }>();
-  const { data, error } = useSWR(`_api/v3/page?pageId=${id}`);
+  const { data, error } = useSWR(
+    `_api/v3/page?pageId=${id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
+  );
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;

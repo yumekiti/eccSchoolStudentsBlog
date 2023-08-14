@@ -20,13 +20,16 @@ const App = () => {
     >
       <Routes>
         <Route path="/" element={<List path="content" />} />
+        <Route path="/event" element={<List path="event" />} />
         <Route path="/question" element={<List path="question" />} />
-        <Route path="/recruit" element={<List path="recruit" />} />
-        <Route path="/it" element={<List path="content%2FIT" />} />
-        <Route path="/it/ai" element={<List path="content/IT/ai" />} />
-        <Route path="/it/nw_sec" element={<List path="content/IT/nw_sec" />} />
-        <Route path="/it/iot" element={<List path="content/IT/iot" />} />
-        <Route path="/it/design" element={<List path="content/IT/design" />} />
+        <Route path="/recruitment" element={<List path="recruitment" />} />
+        <Route path="/club" element={<List path="club" />} />
+        <Route path="/contact" element={<List path="contact" />} />
+        {/* カテゴリ */}
+        <Route path="/it" element={<List path="content/it" />} />
+        <Route path="/game" element={<List path="content/game" />} />
+        <Route path="/web" element={<List path="content/web" />} />
+        {/* 詳細ページ */}
         <Route path="/content/:id" element={<Detail />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

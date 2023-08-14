@@ -2,17 +2,20 @@ import React from 'react';
 import useSWR from 'swr';
 import Twemoji from 'react-twemoji';
 
-import { Tags } from '../../types/tag';
-
 type Props = {
   id: string;
 };
 
 const Component: React.FC<Props> = ({ id }) => {
-  const { data, error } = useSWR<Tags>(`/_api/pages.getPageTag?pageId=${id}`);
+  const [tags, setTags] = React.useState([]);
+  const { data, error } = useSWR(
+    `/_api/pages.getPageTag?pageId=${id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
+  );
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
+
+  if (data.tags && data.tags.length && !tags.length) setTags(data.tags);
 
   return (
     <div className="flex items-center">
@@ -22,7 +25,7 @@ const Component: React.FC<Props> = ({ id }) => {
         </Twemoji>
       </div>
       <ul className="flex items-center flex-wrap ml-2">
-        {data.tags.map((tag, index: number) => (
+        {tags.map((tag, index: number) => (
           <li
             key={index}
             className="mr-1 text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-10 rounded p-1 text-xs md:text-sm hover:outline outline-1 outline-SubHeadline"

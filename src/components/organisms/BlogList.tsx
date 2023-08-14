@@ -9,7 +9,9 @@ type Props = {
 const Component: React.FC<Props> = ({ path }) => {
   const { data, error, size, setSize } = useSWRInfinite(
     (index) =>
-      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${index + 1}`,
+      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${
+        index + 1
+      }&access_token=${process.env.REACT_APP_API_TOKEN}`,
   );
 
   if (error) return <div>Error</div>;
@@ -25,9 +27,10 @@ const Component: React.FC<Props> = ({ path }) => {
   return (
     <>
       {pages.map((page, index) => {
-        const splitedPath = page.path.split('/').slice(-1);
-        const splitedUnderline = splitedPath[0].split('_');
-        const title = splitedUnderline.slice(1).join('_');
+        const splitedPath = (page && page.path.split('/').slice(-1)) || [];
+        const splitedUnderline =
+          (splitedPath.length && splitedPath[0].split('_')) || [];
+        const title = splitedUnderline.slice(1).join('_') || '';
 
         return (
           title && (
