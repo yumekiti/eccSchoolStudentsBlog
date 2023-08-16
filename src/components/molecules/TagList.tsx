@@ -1,38 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 
-import { Tag, Tags } from '../../types/tag';
+import LinkButton from '../atoms/LinkButton';
 
-type Props = {
-  id: string;
-};
+const Component: React.FC = () => {
+  const { data, error, isLoading } = useSWR('/_api/tags.list');
+  const [tags, setTags] = useState([]);
 
-const Component: React.FC<Props> = ({ id }) => {
-  const { data, error, isLoading } = useSWR<Tags>(
-    `/_api/pages.getPageTag?pageId=${id}`,
-  );
-
-  if (error) return <div>Error</div>;
-  if (isLoading) return <div>Loading...</div>;
-
-  const handleClick = (tag: Tag) => {
-    window.location.href =
-      process.env.REACT_APP_API_URL + `/_search?q=tag%3A${tag}`;
-  };
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error!</p>;
+  if (!tags.length)
+    setTags(
+      data.data.sort(
+        (a: { count: number }, b: { count: number }) => b.count - a.count,
+      ),
+    );
 
   return (
-    <ul className="flex items-center flex-wrap ml-2">
-      {data &&
-        data.tags &&
-        data.tags.map((tag, index: number) => (
-          <li
-            key={index}
-            className="mr-1 text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-10 rounded p-1 text-xs md:text-sm hover:outline outline-1 outline-SubHeadline"
-          >
-            <button onClick={() => handleClick(tag)}>#{tag}</button>
+    <nav className="py-2">
+      <h2 className="text-Headline font-bold p-2">タグ</h2>
+      <ul>
+        {tags.map((tag: { name: string }, index: number) => (
+          <li key={index} className="flex items-center">
+            <a
+              href={`${process.env.REACT_APP_API_URL}/_search?q=tag%3A${tag.name}`}
+              className="w-full"
+            >
+              <LinkButton emoji="🏷️" text={`# ${tag.name}`} />
+            </a>
           </li>
         ))}
-    </ul>
+      </ul>
+    </nav>
   );
 };
 

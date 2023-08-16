@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { format } from 'date-fns';
 
-import TagList from '../molecules/TagList';
+import BlogTagList from '../molecules/BlogTagList';
 import TagIcon from '../../assets/elements/TagIcon';
 
 type Props = {
@@ -48,7 +48,7 @@ const Component: React.FC<Props> = ({
             <div className="w-fit">
               <TagIcon />
             </div>
-            <TagList id={id} />
+            <BlogTagList id={id} />
           </div>
         </div>
       </div>

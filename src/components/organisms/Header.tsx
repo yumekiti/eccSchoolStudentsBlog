@@ -5,8 +5,7 @@ import ButtonWithIcon from '../atoms/ButtonWithIcon';
 import ContrastButton from '../atoms/ContrastButton';
 
 import SearchBox from '../molecules/SearchBox';
-import NavigationList from '../molecules/NavigationList';
-import CategoryList from '../molecules/CategoryList';
+import NavigationMenu from '../molecules/NavigationMenu';
 
 import Logo from '../../assets/elements/Logo';
 
@@ -50,8 +49,7 @@ const Component = () => {
         {isMenuOpen && (
           <div className="fixed w-full top-0 left-0 h-screen z-10">
             <div className="w-3/5 bg-Main h-full px-2">
-              <NavigationList />
-              <CategoryList />
+              <NavigationMenu />
             </div>
             <div
               className="fixed top-0 right-0 w-2/5 h-full bg-SubHeadline bg-opacity-90"
