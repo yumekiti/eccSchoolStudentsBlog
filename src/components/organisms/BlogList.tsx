@@ -33,24 +33,27 @@ const Component: React.FC<Props> = ({ path }) => {
 
   return (
     <>
-      {pages.map((page, index) => (
-        <div className="py-2" key={index}>
-          <BlogItem
-            id={page._id}
-            user_id={
-              page.lastUpdateUser ? page.lastUpdateUser.username : 'unknown'
-            }
-            user_image={
-              page.lastUpdateUser
-                ? page.lastUpdateUser.imageUrlCached
-                : '/images/icons/user.svg'
-            }
-            date={page.createdAt}
-            title={page.path.split('_')[1]}
-            likes={page.liker.length}
-          />
-        </div>
-      ))}
+      {pages.map(
+        (page, index) =>
+          page.path.split('_')[1] && (
+            <div className="py-2" key={index}>
+              <BlogItem
+                id={page._id}
+                user_id={
+                  page.lastUpdateUser ? page.lastUpdateUser.username : 'unknown'
+                }
+                user_image={
+                  page.lastUpdateUser
+                    ? page.lastUpdateUser.imageUrlCached
+                    : '/images/icons/user.svg'
+                }
+                date={page.createdAt}
+                title={page.path.split('_')[1]}
+                likes={page.liker.length}
+              />
+            </div>
+          ),
+      )}
       <div className={`py-2 ${!isLast ? 'hidden' : ''}`}>
         <div className="flex items-center justify-center">
           <button
