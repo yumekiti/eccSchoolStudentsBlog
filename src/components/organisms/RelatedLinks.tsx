@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LinkButton from '../atoms/LinkButton';
 import LinkIcon from '../../assets/elements/LinkIcon';
 
-import links from '../../constants/links';
+import { links } from '../../constants/navigation';
 
 const Component: React.FC = () => (
   <div className="py-2">
@@ -16,13 +17,17 @@ const Component: React.FC = () => (
       </div>
 
       <ul>
-        <li className="flex items-center">
-          {links.map((link, index) => (
-            <a key={index} href={link.url} target="blank" className="w-full">
-              <LinkButton emoji={link.emoji} text={link.text} />
-            </a>
-          ))}
-        </li>
+        {links.map((item, index) => (
+          <li key={index} className="flex items-center">
+            <Link to={item.path} className="w-full">
+              <LinkButton
+                emoji={item.emoji}
+                text={item.text}
+                bold={item.bold}
+              />
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   </div>

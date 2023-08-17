@@ -34,4 +34,13 @@ const categories = [
   },
 ];
 
-export { navigation, categories };
+const links = [
+  {
+    text: '公式サイト',
+    emoji: '🏫',
+    path: 'https://comp.ecc.ac.jp/',
+    bold: true,
+  },
+];
+
+export { navigation, categories, links };
