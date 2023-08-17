@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 
 import LinkButton from '../atoms/LinkButton';
 
-import fields from '../../constants/fields';
+import { categories } from '../../constants/navigation';
 
 const Component: React.FC = () => (
   <nav className="py-2">
-    <h2 className="text-Headline font-bold p-2">分野</h2>
+    <h2 className="text-Headline font-bold p-2">カテゴリ</h2>
     <ul>
-      {fields.map((field, index) => (
+      {categories.map((item, index) => (
         <li key={index} className="flex items-center">
-          <Link to={field.path} className="w-full">
-            <LinkButton emoji={field.emoji} text={field.text} bold />
+          <Link to={item.path} className="w-full">
+            <LinkButton emoji={item.emoji} text={item.text} bold={item.bold} />
           </Link>
         </li>
       ))}

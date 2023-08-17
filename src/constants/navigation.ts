@@ -1,4 +1,19 @@
-const fields = [
+const navigation = [
+  {
+    emoji: '🏠',
+    text: 'Home',
+    path: '/',
+    bold: true,
+  },
+  {
+    emoji: '📚',
+    text: 'Blog',
+    path: '/blog',
+    bold: true,
+  },
+];
+
+const categories = [
   {
     emoji: '🌐',
     text: 'IT',
@@ -19,4 +34,4 @@ const fields = [
   },
 ];
 
-export default fields;
+export { navigation, categories };
