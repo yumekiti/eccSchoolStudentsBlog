@@ -1,13 +1,14 @@
 import React from 'react';
 
 import NavigationList from './NavigationList';
-import CategoryList from './CategoryList';
 import TagList from './TagList';
+
+import { navigation, categories } from '../../constants/navigation';
 
 const Component: React.FC = () => (
   <>
-    <NavigationList />
-    <CategoryList />
+    <NavigationList navigation={navigation} />
+    <NavigationList title="カテゴリー" navigation={categories} />
     <TagList />
   </>
 );

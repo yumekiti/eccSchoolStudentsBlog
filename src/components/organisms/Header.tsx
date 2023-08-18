@@ -47,14 +47,14 @@ const Component = () => {
           </div>
         </div>
         {isMenuOpen && (
-          <div className="fixed w-full top-0 left-0 h-screen z-10">
-            <div className="w-3/5 bg-Main h-full px-2">
+          <div
+            className="fixed w-full top-0 left-0 h-screen z-10 bg-SubHeadline bg-opacity-90"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="animate-slide-in-left w-3/5 bg-Main h-full px-2">
               <NavigationMenu />
             </div>
-            <div
-              className="fixed top-0 right-0 w-2/5 h-full bg-SubHeadline bg-opacity-90"
-              onClick={() => setIsMenuOpen(false)}
-            />
+            <div className="fixed top-0 right-0 w-2/5 h-full" />
           </div>
         )}
       </div>

@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 
 import LinkButton from '../atoms/LinkButton';
 
-import { navigation } from '../../constants/navigation';
+type Props = {
+  title?: string;
+  navigation: {
+    path: string;
+    emoji: string;
+    text: string;
+    bold: boolean;
+  }[];
+};
 
-const Component: React.FC = () => (
+const Component: React.FC<Props> = ({ title, navigation }) => (
   <nav className="py-2">
+    {title && <h2 className="text-Headline font-bold p-2">{title}</h2>}
     <ul>
       {navigation.map((item, index) => (
         <li key={index} className="flex items-center">

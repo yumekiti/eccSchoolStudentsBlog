@@ -1,6 +1,6 @@
 import React from 'react';
 
-import About from '../organisms/About';
+import Welcome from '../organisms/Welcome';
 import RelatedLinks from '../organisms/RelatedLinks';
 import NavigationMenu from '../molecules/NavigationMenu';
 
@@ -27,7 +27,7 @@ const Component: React.FC = () => {
           </div>
 
           <div className="hidden lg:col-span-3 lg:block">
-            <About />
+            <Welcome />
             <RelatedLinks />
           </div>
         </div>

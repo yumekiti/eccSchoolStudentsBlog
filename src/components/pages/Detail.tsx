@@ -65,7 +65,7 @@ const Component = () => {
             {blogData && <ContentList content={blogData.revision.body} />}
           </div>
         </div>
-        <div className="w-full fixed bottom-0 bg-Main md:hidden">
+        <div className="w-full fixed bottom-0 bg-Main md:hidden border-t-2 border-SubHeadline">
           {blogData && (
             <CounterButtonGroup
               id={blogData._id}
