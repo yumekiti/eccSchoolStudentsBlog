@@ -42,7 +42,9 @@ const Component: React.FC<Props> = ({
         </div>
       </div>
       <div className="mt-2">
-        <h2 className="text-4xl font-bold text-Headline py-2">{title}</h2>
+        <h2 className="text-2xl font-bold text-Headline py-2 md:text-3xl">
+          {title}
+        </h2>
         <div className="flex flex-col">
           <div className="flex items-center">
             <div className="w-fit">
