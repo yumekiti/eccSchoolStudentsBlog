@@ -9,7 +9,7 @@ const Component: React.FC = () => {
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
-  if (data && data.data.length && !tags.length)
+  if (data && data.data && data.data.length && !tags.length)
     setTags(
       data.data.sort(
         (a: { count: number }, b: { count: number }) => b.count - a.count,
