@@ -18,6 +18,10 @@ const Component = () => {
 
   if (data && !blogData) setBlogData(data.page);
   if (error) return <div>Error</div>;
+  if (!blogData) return <div>Loading...</div>;
+
+  const splited = blogData.path.split('_');
+  const title = splited.slice(1).join('_');
 
   return (
     <Layout>
@@ -50,7 +54,7 @@ const Component = () => {
                 }
                 created_at={new Date(blogData.createdAt)}
                 updated_at={new Date(blogData.updatedAt)}
-                title={blogData.path.split('_')[1]}
+                title={title}
                 content={blogData.revision.body}
               />
             )}

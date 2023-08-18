@@ -33,9 +33,12 @@ const Component: React.FC<Props> = ({ path }) => {
 
   return (
     <>
-      {pages.map(
-        (page, index) =>
-          page.path.split('_')[1] && (
+      {pages.map((page, index) => {
+        const splited = page.path.split('_');
+        const title = splited.slice(1).join('_');
+
+        return (
+          title && (
             <div className="py-2" key={index}>
               <BlogItem
                 id={page._id}
@@ -48,12 +51,13 @@ const Component: React.FC<Props> = ({ path }) => {
                     : '/images/icons/user.svg'
                 }
                 date={page.createdAt}
-                title={page.path.split('_')[1]}
+                title={title}
                 likes={page.liker.length}
               />
             </div>
-          ),
-      )}
+          )
+        );
+      })}
       <div className={`py-2 ${!isLast ? 'hidden' : ''}`}>
         <div className="flex items-center justify-center">
           <button
