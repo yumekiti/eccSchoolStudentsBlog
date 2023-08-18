@@ -12,11 +12,11 @@ const Component: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center rounded border border-Headline group ml-4 border-opacity-30">
+    <div className="flex items-center rounded border border-Headline group ml-4 border-opacity-30 w-full md:w-96">
       <input
         type="text"
         placeholder="Search"
-        className="px-2 placeholder-SubHeadline outline-none w-96 leading-3"
+        className="px-2 placeholder-SubHeadline outline-none leading-3 w-full"
         value={searchText}
         onChange={(e) => setSearchText(e.currentTarget.value)}
         onKeyDown={(e) => {
