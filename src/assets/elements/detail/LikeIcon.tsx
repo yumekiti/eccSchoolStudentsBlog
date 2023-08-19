@@ -7,6 +7,8 @@ const Icon = () => (
     viewBox="0 0 34 34"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="LikeIcon"
   >
     <g clipPath="url(#clip0_37_1240)">
       <path

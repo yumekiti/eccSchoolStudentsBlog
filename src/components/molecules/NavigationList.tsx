@@ -1,31 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import LinkButton from '../atoms/LinkButton';
 
-import HomeIcon from '../../assets/navigation/HomeIcon';
-import HelpIcon from '../../assets/navigation/HelpIcon';
-import PersonSearchIcon from '../../assets/navigation/PersonSearchIcon';
-import BookmarkIcon from '../../assets/navigation/BookmarkIcon';
-import InfoIcon from '../../assets/navigation/InfoIcon';
+type Props = {
+  title?: string;
+  navigation: {
+    path: string;
+    emoji: string;
+    text: string;
+    bold: boolean;
+  }[];
+};
 
-const Component: React.FC = () => (
+const Component: React.FC<Props> = ({ title, navigation }) => (
   <nav className="py-2">
+    {title && <h2 className="text-Headline font-bold p-2">{title}</h2>}
     <ul>
-      <li className="flex items-center">
-        <LinkButton Icon={HomeIcon} Text="ホーム" Bold />
-      </li>
-      <li className="flex items-center">
-        <LinkButton Icon={HelpIcon} Text="質問" Bold />
-      </li>
-      <li className="flex items-center">
-        <LinkButton Icon={PersonSearchIcon} Text="募集" Bold />
-      </li>
-      <li className="flex items-center">
-        <LinkButton Icon={BookmarkIcon} Text="ブックマーク" Bold />
-      </li>
-      <li className="flex items-center">
-        <LinkButton Icon={InfoIcon} Text="Info" Bold />
-      </li>
+      {navigation.map((item, index) => (
+        <li key={index} className="flex items-center">
+          <Link to={item.path} className="w-full">
+            <LinkButton emoji={item.emoji} text={item.text} bold={item.bold} />
+          </Link>
+        </li>
+      ))}
     </ul>
   </nav>
 );

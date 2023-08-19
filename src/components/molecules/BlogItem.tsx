@@ -1,59 +1,79 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import Twemoji from 'react-twemoji';
 
-import ButtonWithIcon from '../atoms/ButtonWithIcon';
-import TagList from '../molecules/TagList';
-import TagIcon from '../../assets/elements/TagIcon';
-import LikeIcon from '../../assets/elements/LikeIcon';
-import BookmarkIcon from '../../assets/elements/BookmarkIcon';
+import BlogTagList from './BlogTagList';
+import BlogInfo from './BlogInfo';
 
 type Props = {
+  id: string;
   user_id: string;
-  date: string;
+  user_name: string;
+  user_image: string;
+  created_at: Date;
+  updated_at: Date;
   title: string;
-  tags: string[];
   likes: number;
+  commentCount: number;
+  seenUsersCount: number;
 };
 
-const Component: React.FC<Props> = ({ user_id, date, title, tags, likes }) => (
-  <div className="py-2">
-    <div className="bg-Main p-4 rounded hover:cursor-pointer">
-      <div className="flex items-center space-x-1">
-        <div className="bg-Highlight w-8 h-8 rounded-full"></div>
-        <div className="flex flex-col text-SubHeadline text-xs md:text-sm">
-          <p className="px-1 w-fit font-bold tracking-wide hover:text-Headline hover:bg-SubHeadline hover:bg-opacity-10 rounded">
-            @{user_id}
-          </p>
-          <p className="px-1">{date}</p>
-        </div>
-      </div>
-      <div className="mt-2 md:px-10">
-        <h2 className="text-base md:text-lg lg:text-xl text-Headline break-all text-justify font-bold line-clamp-3 hover:text-Highlight">
-          {title}
-        </h2>
-        <div className="flex flex-col">
-          <div className="flex flex-col">
-            <div className="flex items-center">
-              <div className="w-fit">
-                <TagIcon />
-              </div>
-              <TagList tags={tags} />
-            </div>
-          </div>
-          <div className="flex justify-between items-end">
-            <div className="mt-2 flex space-x-1">
-              <div className="w-fit">
-                <LikeIcon />
+const Component: React.FC<Props> = ({
+  id,
+  user_id,
+  user_name,
+  user_image,
+  created_at,
+  updated_at,
+  title,
+  likes,
+  commentCount,
+  seenUsersCount,
+}) => {
+  const userNavigate = useNavigate();
+  const handleClick = () => userNavigate(`/content/${id}`);
+
+  return (
+    <button onClick={handleClick} className="w-full">
+      <div className="bg-Main p-4 rounded hover:cursor-pointer group">
+        <BlogInfo
+          user_id={user_id}
+          user_name={user_name}
+          user_image={user_image}
+          updated_at={updated_at}
+          created_at={created_at}
+        />
+        <div className="md:px-10">
+          <h2 className="py-2 text-base md:text-lg lg:text-xl text-Headline break-all text-justify font-bold line-clamp-3 group-hover:text-Highlight">
+            {title}
+          </h2>
+          <div>
+            <BlogTagList id={id} />
+            <div className="flex justify-start items-center space-x-2">
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>❤</span>
+                </Twemoji>
               </div>
               <span className="text-SubHeadline text-sm">{likes}</span>
-            </div>
-            <div className="w-fit">
-              <ButtonWithIcon Icon={BookmarkIcon} AriaLabel="BookmarkButton" />
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>💬</span>
+                </Twemoji>
+              </div>
+              <span className="text-SubHeadline text-sm">{commentCount}</span>
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>👀</span>
+                </Twemoji>
+              </div>
+              <span className="text-SubHeadline text-sm">{seenUsersCount}</span>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-);
+    </button>
+  );
+};
 
 export default Component;
