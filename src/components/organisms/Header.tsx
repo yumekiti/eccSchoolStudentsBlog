@@ -30,7 +30,11 @@ const Component = () => {
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
                 />
               </div>
-              <Link to="/" className="ml-2 md:m-0 cursor-pointer">
+              <Link
+                to="/"
+                className="ml-2 md:m-0 cursor-pointer"
+                aria-label="Logo"
+              >
                 <Logo />
               </Link>
               <div className="hidden md:flex">
