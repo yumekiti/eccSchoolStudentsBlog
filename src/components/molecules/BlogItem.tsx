@@ -1,9 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import LikeIcon from '../../assets/elements/LikeIcon';
-import CommentIcon from '../../assets/elements/CommentIcon';
-import TagIcon from '../../assets/elements/TagIcon';
+import Twemoji from 'react-twemoji';
 
 import BlogTagList from './BlogTagList';
 import BlogInfo from './BlogInfo';
@@ -18,6 +15,7 @@ type Props = {
   title: string;
   likes: number;
   commentCount: number;
+  seenUsersCount: number;
 };
 
 const Component: React.FC<Props> = ({
@@ -30,6 +28,7 @@ const Component: React.FC<Props> = ({
   title,
   likes,
   commentCount,
+  seenUsersCount,
 }) => {
   const userNavigate = useNavigate();
   const handleClick = () => userNavigate(`/content/${id}`);
@@ -49,17 +48,26 @@ const Component: React.FC<Props> = ({
             {title}
           </h2>
           <div>
-            <div className="flex items-center">
-              <div className="w-fit">
-                <TagIcon />
-              </div>
-              <BlogTagList id={id} />
-            </div>
+            <BlogTagList id={id} />
             <div className="flex justify-start items-center space-x-2">
-              <LikeIcon />
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>❤</span>
+                </Twemoji>
+              </div>
               <span className="text-SubHeadline text-sm">{likes}</span>
-              <CommentIcon />
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>💬</span>
+                </Twemoji>
+              </div>
               <span className="text-SubHeadline text-sm">{commentCount}</span>
+              <div className="w-4">
+                <Twemoji options={{ className: 'twemoji' }}>
+                  <span>👀</span>
+                </Twemoji>
+              </div>
+              <span className="text-SubHeadline text-sm">{seenUsersCount}</span>
             </div>
           </div>
         </div>

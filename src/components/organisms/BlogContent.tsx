@@ -4,7 +4,6 @@ import remarkGfm from 'remark-gfm';
 
 import BlogTagList from '../molecules/BlogTagList';
 import BlogInfo from '../molecules/BlogInfo';
-import TagIcon from '../../assets/elements/TagIcon';
 
 type Props = {
   id: string;
@@ -41,12 +40,7 @@ const Component: React.FC<Props> = ({
           {title}
         </h2>
         <div className="flex flex-col">
-          <div className="flex items-center">
-            <div className="w-fit">
-              <TagIcon />
-            </div>
-            <BlogTagList id={id} />
-          </div>
+          <BlogTagList id={id} />
         </div>
       </div>
       <div className="markdown-body py-12">

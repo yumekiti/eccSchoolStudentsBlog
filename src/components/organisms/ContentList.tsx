@@ -1,6 +1,5 @@
 import React from 'react';
-
-import ListIcon from '../../assets/elements/ListIcon';
+import Twemoji from 'react-twemoji';
 
 import { extractHeadersFromMarkdown } from '../../libs/markdown';
 
@@ -15,7 +14,11 @@ const Component: React.FC<Props> = ({ content }) => {
     <div className="py-2">
       <div className="bg-Main p-4 rounded">
         <div className="py-2 flex items-center space-x-2 justify-center">
-          <ListIcon />
+          <div className="w-8">
+            <Twemoji options={{ className: 'twemoji' }}>
+              <span>📝</span>
+            </Twemoji>
+          </div>
           <span className="text-xl font-bold text-center text-Headline">
             目次
           </span>

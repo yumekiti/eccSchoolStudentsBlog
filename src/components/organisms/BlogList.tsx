@@ -44,6 +44,7 @@ const Component: React.FC<Props> = ({ path }) => {
                 title={title}
                 likes={page.liker.length}
                 commentCount={page.commentCount}
+                seenUsersCount={page.seenUsers.length}
               />
             </div>
           )
