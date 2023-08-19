@@ -25,8 +25,9 @@ const Component: React.FC<Props> = ({ path }) => {
   return (
     <>
       {pages.map((page, index) => {
-        const splited = page.path.split('_');
-        const title = splited.slice(1).join('_');
+        const splitedPath = page.path.split('/').slice(-1);
+        const splitedUnderline = splitedPath[0].split('_');
+        const title = splitedUnderline.slice(1).join('_');
 
         return (
           title && (
@@ -42,6 +43,7 @@ const Component: React.FC<Props> = ({ path }) => {
                 updated_at={new Date(page.updatedAt)}
                 title={title}
                 likes={page.liker.length}
+                commentCount={page.commentCount}
               />
             </div>
           )

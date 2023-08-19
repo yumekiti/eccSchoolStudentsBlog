@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import LikeIcon from '../../assets/elements/LikeIcon';
+import CommentIcon from '../../assets/elements/CommentIcon';
 import TagIcon from '../../assets/elements/TagIcon';
 
 import BlogTagList from './BlogTagList';
@@ -16,6 +17,7 @@ type Props = {
   updated_at: Date;
   title: string;
   likes: number;
+  commentCount: number;
 };
 
 const Component: React.FC<Props> = ({
@@ -27,6 +29,7 @@ const Component: React.FC<Props> = ({
   updated_at,
   title,
   likes,
+  commentCount,
 }) => {
   const userNavigate = useNavigate();
   const handleClick = () => userNavigate(`/content/${id}`);
@@ -52,9 +55,11 @@ const Component: React.FC<Props> = ({
               </div>
               <BlogTagList id={id} />
             </div>
-            <div className="flex justify-start items-center">
+            <div className="flex justify-start items-center space-x-2">
               <LikeIcon />
-              <span className="text-SubHeadline text-sm ml-2">{likes}</span>
+              <span className="text-SubHeadline text-sm">{likes}</span>
+              <CommentIcon />
+              <span className="text-SubHeadline text-sm">{commentCount}</span>
             </div>
           </div>
         </div>

@@ -17,8 +17,9 @@ const Component = () => {
   if (!data) return <div>Loading...</div>;
 
   const blogData = data.page;
-  const splited = blogData.path.split('_');
-  const title = splited.slice(1).join('_');
+  const splitedPath = blogData.path.split('/').slice(-1);
+  const splitedUnderline = splitedPath[0].split('_');
+  const title = splitedUnderline.slice(1).join('_');
 
   return (
     <Layout>

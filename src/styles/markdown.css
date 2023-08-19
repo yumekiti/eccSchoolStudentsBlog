@@ -1007,3 +1007,38 @@
 .markdown-body ::-webkit-calendar-picker-indicator {
   filter: invert(50%);
 }
+
+/* h6 は非表示 */
+.markdown-body h6 {
+  display: none;
+}
+
+/* イタリックの色を変える */
+.markdown-body em {
+  color: #ef4565;
+}
+
+/* boldの色を変える */
+.markdown-body strong {
+  color: #3da9fc;
+}
+
+/* リストのマーカーを変える */
+.markdown-body ul {
+  list-style: disc;
+}
+
+/* リストのマーカーを変える */
+.markdown-body ol {
+  list-style: decimal;
+}
+
+/* リストのマーカーを変える */
+.markdown-body ul ul {
+  list-style: circle;
+}
+
+/* リストのマーカーを変える */
+.markdown-body ol ol {
+  list-style: lower-latin;
+}
