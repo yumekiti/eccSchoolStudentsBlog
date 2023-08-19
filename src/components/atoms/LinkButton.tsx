@@ -16,7 +16,7 @@ const Component: React.FC<Props> = ({ emoji, text, bold = false }) => (
     </div>
     <p
       className={`whitespace-nowrap text-Headline group-hover:text-Highlight group-hover:underline ${
-        bold ? 'font-bold' : ''
+        bold && 'font-bold'
       }`}
     >
       {text}

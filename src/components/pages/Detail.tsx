@@ -16,8 +16,7 @@ const Component = () => {
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
-  const blogData = data.page;
-  const splitedPath = blogData.path.split('/').slice(-1);
+  const splitedPath = data.page.path.split('/').slice(-1);
   const splitedUnderline = splitedPath[0].split('_');
   const title = splitedUnderline.slice(1).join('_');
 
@@ -27,46 +26,40 @@ const Component = () => {
         <div className="grid grid-cols-12 gap-4 px-2 md:p-0">
           <div className="hidden md:block md:col-span-3 lg:col-span-1">
             <div className="py-2">
-              {blogData && (
-                <CounterButtonGroup
-                  id={blogData._id}
-                  like={blogData.liker.length}
-                  comment={blogData.commentCount}
-                />
-              )}
+              <CounterButtonGroup
+                id={data.page._id}
+                like={data.page.liker.length}
+                comment={data.page.commentCount}
+              />
             </div>
           </div>
           <div className="col-span-12 md:col-span-9 lg:col-span-8 mb-12">
-            {blogData && (
-              <BlogContent
-                id={blogData._id}
-                user_id={blogData.lastUpdateUser.username || 'unknown'}
-                user_name={blogData.lastUpdateUser.name || 'unknown'}
-                user_image={
-                  blogData.lastUpdateUser.imageUrlCached ||
-                  '/images/icons/user.svg'
-                }
-                created_at={new Date(blogData.createdAt)}
-                updated_at={new Date(blogData.updatedAt)}
-                title={title}
-                content={blogData.revision.body}
-              />
-            )}
-            {blogData && <CommentList id={blogData._id} />}
+            <BlogContent
+              id={data.page._id}
+              user_id={data.page.lastUpdateUser.username || 'unknown'}
+              user_name={data.page.lastUpdateUser.name || 'unknown'}
+              user_image={
+                data.page.lastUpdateUser.imageUrlCached ||
+                '/images/icons/user.svg'
+              }
+              created_at={new Date(data.page.createdAt)}
+              updated_at={new Date(data.page.updatedAt)}
+              title={title}
+              content={data.page.revision.body}
+            />
+            <CommentList id={data.page._id} />
           </div>
 
           <div className="hidden lg:col-span-3 lg:block">
-            {blogData && <ContentList content={blogData.revision.body} />}
+            <ContentList content={data.page.revision.body} />
           </div>
         </div>
         <div className="w-full fixed bottom-0 bg-Main md:hidden border-t-2 border-SubHeadline">
-          {blogData && (
-            <CounterButtonGroup
-              id={blogData._id}
-              like={blogData.liker.length}
-              comment={blogData.commentCount}
-            />
-          )}
+          <CounterButtonGroup
+            id={data.page._id}
+            like={data.page.liker.length}
+            comment={data.page.commentCount}
+          />
         </div>
       </div>
     </Layout>

@@ -9,7 +9,7 @@ type Props = {
 const Component: React.FC<Props> = ({ path }) => {
   const { data, error, size, setSize } = useSWRInfinite(
     (index) =>
-      `/_api/v3/pages/list?path=%2FBlog%2F${path}&limit=8&page=${index + 1}`,
+      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${index + 1}`,
   );
 
   if (error) return <div>Error</div>;
@@ -50,7 +50,7 @@ const Component: React.FC<Props> = ({ path }) => {
           )
         );
       })}
-      <div className={`py-2 ${isLast ? 'hidden' : ''}`}>
+      <div className={`py-2 ${isLast && 'hidden'}`}>
         <div className="flex items-center justify-center">
           <button
             className="bg-Main py-2 px-16 rounded text-Headline hover:bg-SubHeadline hover:bg-opacity-20 outline outline-1 outline-SubHeadline"
