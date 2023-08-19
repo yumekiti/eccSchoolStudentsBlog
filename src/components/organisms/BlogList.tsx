@@ -1,34 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import useSWR from 'swr';
-
+import React from 'react';
+import useSWRInfinite from 'swr/infinite';
 import BlogItem from '../molecules/BlogItem';
-
-import { Pages } from '../../types/page';
 
 type Props = {
   path: string;
 };
 
 const Component: React.FC<Props> = ({ path }) => {
-  const [pages, setPages] = useState<Pages>([]);
-  const [page, setPage] = useState(1);
-  const { data, error } = useSWR(
-    `/_api/v3/pages/list?path=%2FBlog%2F${path}&limit=8&page=${page}`,
+  const { data, error, size, setSize } = useSWRInfinite(
+    (index) =>
+      `/_api/v3/pages/list?path=%2FBlog%2F${path}&limit=8&page=${index + 1}`,
   );
-  useEffect(() => {
-    setPages([]), setPage(1);
-  }, [path]);
 
   if (error) return <div>Error</div>;
-  if (data && !data.totalCount) return <div>No Data</div>;
+  if (!data) return <div>Loading...</div>;
 
-  if (data && !pages.length) setPages(data.pages);
-
-  const isLast = data && pages.length != data.totalCount;
+  const pages = data.flatMap((page) => page.pages);
+  const isLast = pages.length === data[0].totalCount;
 
   const handleMore = () => {
-    setPage(page + 1);
-    if (isLast) setPages([...pages, ...data.pages]);
+    setSize(size + 1);
   };
 
   return (
@@ -58,7 +49,7 @@ const Component: React.FC<Props> = ({ path }) => {
           )
         );
       })}
-      <div className={`py-2 ${!isLast ? 'hidden' : ''}`}>
+      <div className={`py-2 ${isLast ? 'hidden' : ''}`}>
         <div className="flex items-center justify-center">
           <button
             className="bg-Main py-2 px-16 rounded text-Headline hover:bg-SubHeadline hover:bg-opacity-20 outline outline-1 outline-SubHeadline"
