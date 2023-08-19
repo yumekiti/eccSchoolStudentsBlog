@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {
   Icon: React.FC;
   aria_label: string;
-  onClick?: () => void;
+  onClick: () => void;
 };
 
 const Component: React.FC<Props> = ({ Icon, aria_label, onClick }) => (

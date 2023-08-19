@@ -21,7 +21,9 @@ const Component: React.FC<Props> = ({ id }) => {
   const { data, error } = useSWR(`/_api/comments.get?page_id=${id}`);
 
   if (error) return <div>Error</div>;
-  if (data && commentCount !== data.comments.length) {
+  if (!data) return <div>Loading...</div>;
+
+  if (commentCount !== data.comments.length) {
     setComments(data.comments);
     setCommentCount(data.comments.length);
   }

@@ -33,15 +33,13 @@ const Component: React.FC<Props> = ({ path }) => {
             <div className="py-2" key={index}>
               <BlogItem
                 id={page._id}
-                user_id={
-                  page.lastUpdateUser ? page.lastUpdateUser.username : 'unknown'
-                }
+                user_id={page.lastUpdateUser.username || 'unknown'}
+                user_name={page.lastUpdateUser.name || 'unknown'}
                 user_image={
-                  page.lastUpdateUser
-                    ? page.lastUpdateUser.imageUrlCached
-                    : '/images/icons/user.svg'
+                  page.lastUpdateUser.imageUrlCached || '/images/icons/user.svg'
                 }
-                date={page.createdAt}
+                created_at={new Date(page.createdAt)}
+                updated_at={new Date(page.updatedAt)}
                 title={title}
                 likes={page.liker.length}
               />

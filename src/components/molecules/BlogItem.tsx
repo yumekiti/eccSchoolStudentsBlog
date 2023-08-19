@@ -5,12 +5,15 @@ import LikeIcon from '../../assets/elements/LikeIcon';
 import TagIcon from '../../assets/elements/TagIcon';
 
 import BlogTagList from './BlogTagList';
+import BlogInfo from './BlogInfo';
 
 type Props = {
   id: string;
   user_id: string;
+  user_name: string;
   user_image: string;
-  date: string;
+  created_at: Date;
+  updated_at: Date;
   title: string;
   likes: number;
 };
@@ -18,8 +21,10 @@ type Props = {
 const Component: React.FC<Props> = ({
   id,
   user_id,
+  user_name,
   user_image,
-  date,
+  created_at,
+  updated_at,
   title,
   likes,
 }) => {
@@ -29,17 +34,13 @@ const Component: React.FC<Props> = ({
   return (
     <button onClick={handleClick} className="w-full">
       <div className="bg-Main p-4 rounded hover:cursor-pointer group">
-        <div className="flex items-center space-x-1">
-          <img
-            src={process.env.REACT_APP_API_URL + user_image}
-            alt="user"
-            className="w-8 h-8 rounded-full"
-          />
-          <div className="flex flex-col text-SubHeadline text-xs md:text-sm">
-            <p className="px-1 w-fit font-bold tracking-wide">@{user_id}</p>
-            <p className="px-1">{date}</p>
-          </div>
-        </div>
+        <BlogInfo
+          user_id={user_id}
+          user_name={user_name}
+          user_image={user_image}
+          updated_at={updated_at}
+          created_at={created_at}
+        />
         <div className="md:px-10">
           <h2 className="py-2 text-base md:text-lg lg:text-xl text-Headline break-all text-justify font-bold line-clamp-3 group-hover:text-Highlight">
             {title}

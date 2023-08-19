@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 
@@ -9,17 +9,14 @@ import BlogContent from '../organisms/BlogContent';
 import ContentList from '../organisms/ContentList';
 import CommentList from '../organisms/CommentList';
 
-import { Blog } from '../../types/blog';
-
 const Component = () => {
   const { id } = useParams<{ id: string }>();
   const { data, error } = useSWR(`_api/v3/page?pageId=${id}`);
-  const [blogData, setBlogData] = useState<Blog | null>(null);
 
-  if (data && !blogData) setBlogData(data.page);
   if (error) return <div>Error</div>;
-  if (!blogData) return <div>Loading...</div>;
+  if (!data) return <div>Loading...</div>;
 
+  const blogData = data.page;
   const splited = blogData.path.split('_');
   const title = splited.slice(1).join('_');
 
@@ -42,15 +39,11 @@ const Component = () => {
             {blogData && (
               <BlogContent
                 id={blogData._id}
-                user_id={
-                  blogData.lastUpdateUser
-                    ? blogData.lastUpdateUser.username
-                    : 'unknown'
-                }
+                user_id={blogData.lastUpdateUser.username || 'unknown'}
+                user_name={blogData.lastUpdateUser.name || 'unknown'}
                 user_image={
-                  blogData.lastUpdateUser
-                    ? blogData.lastUpdateUser.imageUrlCached
-                    : '/images/icons/user.svg'
+                  blogData.lastUpdateUser.imageUrlCached ||
+                  '/images/icons/user.svg'
                 }
                 created_at={new Date(blogData.createdAt)}
                 updated_at={new Date(blogData.updatedAt)}

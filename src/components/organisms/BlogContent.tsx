@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { format } from 'date-fns';
 
 import BlogTagList from '../molecules/BlogTagList';
+import BlogInfo from '../molecules/BlogInfo';
 import TagIcon from '../../assets/elements/TagIcon';
 
 type Props = {
   id: string;
   user_id: string;
+  user_name: string;
   user_image: string;
   created_at: Date;
   updated_at: Date;
@@ -19,6 +20,7 @@ type Props = {
 const Component: React.FC<Props> = ({
   id,
   user_id,
+  user_name,
   user_image,
   created_at,
   updated_at,
@@ -27,20 +29,13 @@ const Component: React.FC<Props> = ({
 }) => (
   <div className="py-2">
     <div className="bg-Main p-6 md:px-16 rounded">
-      <div className="flex items-center space-x-1">
-        <img
-          src={process.env.REACT_APP_API_URL + user_image}
-          alt="user"
-          className="w-8 h-8 rounded-full"
-        />
-        <div className="flex flex-col text-SubHeadline text-xs md:text-sm">
-          <p className="px-1 w-fit font-bold tracking-wide">@{user_id}</p>
-          <p className="px-1">
-            UpdateAt&nbsp;{format(updated_at, 'yyyy/MM/dd')}&nbsp;CreateAt&nbsp;
-            {format(created_at, 'yyyy/MM/dd')}
-          </p>
-        </div>
-      </div>
+      <BlogInfo
+        user_id={user_id}
+        user_name={user_name}
+        user_image={user_image}
+        updated_at={updated_at}
+        created_at={created_at}
+      />
       <div className="mt-2">
         <h2 className="text-2xl font-bold text-Headline py-2 md:text-3xl">
           {title}

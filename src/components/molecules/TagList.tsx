@@ -4,12 +4,13 @@ import useSWR from 'swr';
 import LinkButton from '../atoms/LinkButton';
 
 const Component: React.FC = () => {
-  const { data, error, isLoading } = useSWR('/_api/tags.list');
+  const { data, error } = useSWR('/_api/tags.list');
   const [tags, setTags] = useState([]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>Loading...</p>;
   if (error) return <p>Error!</p>;
-  if (data && data.data && data.data.length && !tags.length)
+
+  if (data.data.length && !tags.length)
     setTags(
       data.data.sort(
         (a: { count: number }, b: { count: number }) => b.count - a.count,
