@@ -64,7 +64,7 @@ const Component: React.FC<Props> = ({
               <span className="text-SubHeadline text-sm">{commentCount}</span>
               <div className="w-4">
                 <Twemoji options={{ className: 'twemoji' }}>
-                  <span>👀</span>
+                  <span>🐾</span>
                 </Twemoji>
               </div>
               <span className="text-SubHeadline text-sm">{seenUsersCount}</span>
