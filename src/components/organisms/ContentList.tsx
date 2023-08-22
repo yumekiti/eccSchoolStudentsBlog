@@ -38,7 +38,7 @@ const Component: React.FC<Props> = ({ content }) => {
                 ${header.level == 3 ? 'ml-8' : ''}
                 ${header.level == 4 ? 'ml-12' : ''}
                 ${header.level == 5 ? 'ml-16' : ''}
-                ${header.level == 6 ? 'ml-20' : ''}
+                ${header.level == 6 ? 'hidden' : ''}
               `}
               >
                 <a href={`#${header.id}`} className="hover:underline">
