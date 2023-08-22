@@ -89,6 +89,18 @@ const links = [
     path: 'https://stork.ecc.ac.jp/',
     bold: false,
   },
+  {
+    text: 'Marplify',
+    emoji: '📊',
+    path: 'http://marplify.yumekiti.net/',
+    bold: false,
+  },
+  {
+    text: 'Mdcal',
+    emoji: '📅',
+    path: 'http://marplify.yumekiti.net/',
+    bold: false,
+  },
 ];
 
 export { navigation, categories, links };

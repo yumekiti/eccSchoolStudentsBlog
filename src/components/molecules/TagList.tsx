@@ -23,16 +23,19 @@ const Component: React.FC = () => {
     <nav className="py-2">
       <h2 className="text-Headline font-bold p-2">タグ</h2>
       <ul>
-        {tags.map((tag: { name: string }, index: number) => (
-          <li key={index} className="flex items-center">
-            <a
-              href={`${process.env.REACT_APP_API_URL}/_search?q=tag%3A${tag.name}`}
-              className="w-full"
-            >
-              <LinkButton emoji="🏷️" text={`# ${tag.name}`} />
-            </a>
-          </li>
-        ))}
+        {tags.map(
+          (tag: { name: string }, index: number) =>
+            index < 8 && (
+              <li key={index} className="flex items-center">
+                <a
+                  href={`${process.env.REACT_APP_API_URL}/_search?q=tag%3A${tag.name}`}
+                  className="w-full"
+                >
+                  <LinkButton emoji="🏷️" text={`# ${tag.name}`} />
+                </a>
+              </li>
+            ),
+        )}
       </ul>
     </nav>
   );

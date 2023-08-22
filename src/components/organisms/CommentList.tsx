@@ -8,16 +8,20 @@ import { fetchInstance } from '../../libs/fetchInstance';
 
 import ContrastButton from '../atoms/ContrastButton';
 
-import { Comments } from '../../types/comment';
+import { Comment } from '../../types/comment';
 
 type Props = {
   id: string;
 };
 
 const Component: React.FC<Props> = ({ id }) => {
+  // State for handling comments and user input
   const [comment, setComment] = useState('');
-  const [comments, setComments] = useState<Comments>([]);
+  const [comments, setComments] = useState<Comment[][]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
+  const [page, setPage] = useState<number>(0);
+
+  // Fetch comments using SWR
   const { data, error } = useSWR(
     `/_api/comments.get?page_id=${id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
   );
@@ -25,13 +29,19 @@ const Component: React.FC<Props> = ({ id }) => {
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
+  // Update comments if commentCount changes
   if (commentCount !== data.comments.length) {
-    setComments(data.comments);
+    const newComments: Comment[][] = [];
+    for (let i = 0; i < data.comments.length; i += 5) {
+      newComments.push(data.comments.slice(i, i + 5));
+    }
+    setComments(newComments);
     setCommentCount(data.comments.length);
   }
 
+  // Add a new comment
   const handleComment = () => {
-    const data = {
+    const requestData = {
       access_token: process.env.REACT_APP_API_TOKEN,
       commentForm: {
         page_id: id,
@@ -40,10 +50,14 @@ const Component: React.FC<Props> = ({ id }) => {
     };
 
     fetchInstance()
-      .post('/_api/comments.add', data)
+      .post('/_api/comments.add', requestData)
       .then((res) => {
-        setComments([res.data.comment, ...comments]);
+        setComments([[res.data.comment, ...comments[0]], ...comments.slice(1)]);
         setComment('');
+        setPage(0);
+      })
+      .catch((error) => {
+        console.error('Error adding comment:', error);
       });
   };
 
@@ -53,16 +67,16 @@ const Component: React.FC<Props> = ({ id }) => {
         <div className="text-Headline font-bold text-2xl">コメント</div>
         <div className="text-SubHeadline">
           {comments.length > 0 ? (
-            comments
+            comments[page]
               .slice()
               .reverse()
-              .map((comment, index) => (
-                <div className="border-b my-6" key={index}>
+              .map((comment) => (
+                <div className="border-b my-6" key={comment._id}>
                   <div className="flex justify-between items-center">
                     <span>
                       {format(new Date(comment.createdAt), 'yyyy/MM/dd HH:mm')}
                     </span>
-                    <p>commnet:&nbsp;{++index}</p>
+                    <p>id:&nbsp;{comment._id}</p>
                   </div>
                   <div className="markdown-body text-Headline py-6">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -75,6 +89,28 @@ const Component: React.FC<Props> = ({ id }) => {
             <p className="text-Headline py-6">
               この記事にコメントはありません。
             </p>
+          )}
+        </div>
+        <div className="flex justify-between my-4">
+          {page === 0 ? (
+            <div></div>
+          ) : (
+            <ContrastButton
+              text="前へ"
+              onClick={() => {
+                setPage(page - 1);
+              }}
+            />
+          )}
+          {page + 1 === comments.length ? (
+            <div></div>
+          ) : (
+            <ContrastButton
+              text="次へ"
+              onClick={() => {
+                setPage(page + 1);
+              }}
+            />
           )}
         </div>
         <div id="comment" className="flex flex-col">
