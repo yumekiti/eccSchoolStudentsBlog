@@ -37,11 +37,7 @@ const Component: React.FC<Props> = ({ path }) => {
             <div className="py-2" key={index}>
               <BlogItem
                 id={page._id}
-                user_id={page.lastUpdateUser.username || 'unknown'}
-                user_name={page.lastUpdateUser.name || 'unknown'}
-                user_image={
-                  page.lastUpdateUser.imageUrlCached || '/images/icons/user.svg'
-                }
+                user_id={page.creator}
                 created_at={new Date(page.createdAt)}
                 updated_at={new Date(page.updatedAt)}
                 title={title}

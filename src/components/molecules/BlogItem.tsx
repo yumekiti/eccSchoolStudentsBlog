@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Twemoji from 'react-twemoji';
+import useSWR from 'swr';
 
 import BlogTagList from './BlogTagList';
 import BlogInfo from './BlogInfo';
@@ -8,8 +9,6 @@ import BlogInfo from './BlogInfo';
 type Props = {
   id: string;
   user_id: string;
-  user_name: string;
-  user_image: string;
   created_at: Date;
   updated_at: Date;
   title: string;
@@ -21,8 +20,6 @@ type Props = {
 const Component: React.FC<Props> = ({
   id,
   user_id,
-  user_name,
-  user_image,
   created_at,
   updated_at,
   title,
@@ -31,15 +28,22 @@ const Component: React.FC<Props> = ({
   seenUsersCount,
 }) => {
   const userNavigate = useNavigate();
+  const { data, error } = useSWR(
+    `/_api/v3/users/list?userIds=${user_id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
+  );
+
+  if (error) return <div>Error</div>;
+  if (!data) return <div>Loading...</div>;
+
   const handleClick = () => userNavigate(`/content/${id}`);
 
   return (
     <button onClick={handleClick} className="w-full">
       <div className="bg-Main p-4 rounded hover:cursor-pointer group">
         <BlogInfo
-          user_id={user_id}
-          user_name={user_name}
-          user_image={user_image}
+          user_id={data.users[0].name || 'unknown'}
+          user_name={data.users[0].username || 'unknown'}
+          user_image={data.users[0].imageUrlCached || '/images/icons/user.svg'}
           updated_at={updated_at}
           created_at={created_at}
         />
