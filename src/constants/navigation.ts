@@ -98,7 +98,7 @@ const links = [
   {
     text: 'Mdcal',
     emoji: '📅',
-    path: 'http://marplify.yumekiti.net/',
+    path: 'http://mdcal.yumekiti.net/',
     bold: false,
   },
 ];
