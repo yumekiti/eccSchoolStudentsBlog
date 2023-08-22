@@ -52,7 +52,17 @@ const Component: React.FC<Props> = ({ id }) => {
     fetchInstance()
       .post('/_api/comments.add', requestData)
       .then((res) => {
-        setComments([[res.data.comment, ...comments[0]], ...comments.slice(1)]);
+        if (comments.length === 0) {
+          setComments([[res.data.comment]]);
+          setComment('');
+          setPage(0);
+          return;
+        } else {
+          setComments([
+            [res.data.comment, ...comments[0]],
+            ...comments.slice(1),
+          ]);
+        }
         setComment('');
         setPage(0);
       })
