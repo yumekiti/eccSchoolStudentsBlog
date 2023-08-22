@@ -67,50 +67,55 @@ const Component: React.FC<Props> = ({ id }) => {
         <div className="text-Headline font-bold text-2xl">コメント</div>
         <div className="text-SubHeadline">
           {comments.length > 0 ? (
-            comments[page]
-              .slice()
-              .reverse()
-              .map((comment) => (
-                <div className="border-b my-6" key={comment._id}>
-                  <div className="flex justify-between items-center">
-                    <span>
-                      {format(new Date(comment.createdAt), 'yyyy/MM/dd HH:mm')}
-                    </span>
-                    <p>id:&nbsp;{comment._id}</p>
+            <>
+              {comments[page]
+                .slice()
+                .reverse()
+                .map((comment) => (
+                  <div className="border-b my-6" key={comment._id}>
+                    <div className="flex justify-between items-center">
+                      <span>
+                        {format(
+                          new Date(comment.createdAt),
+                          'yyyy/MM/dd HH:mm',
+                        )}
+                      </span>
+                      <p>id:&nbsp;{comment._id}</p>
+                    </div>
+                    <div className="markdown-body text-Headline py-6">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {comment.comment}
+                      </ReactMarkdown>
+                    </div>
                   </div>
-                  <div className="markdown-body text-Headline py-6">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                      {comment.comment}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              ))
+                ))}
+              <div className="flex justify-between my-4">
+                {page === 0 ? (
+                  <div></div>
+                ) : (
+                  <ContrastButton
+                    text="前へ"
+                    onClick={() => {
+                      setPage(page - 1);
+                    }}
+                  />
+                )}
+                {page + 1 === comments.length ? (
+                  <div></div>
+                ) : (
+                  <ContrastButton
+                    text="次へ"
+                    onClick={() => {
+                      setPage(page + 1);
+                    }}
+                  />
+                )}
+              </div>
+            </>
           ) : (
             <p className="text-Headline py-6">
               この記事にコメントはありません。
             </p>
-          )}
-        </div>
-        <div className="flex justify-between my-4">
-          {page === 0 ? (
-            <div></div>
-          ) : (
-            <ContrastButton
-              text="前へ"
-              onClick={() => {
-                setPage(page - 1);
-              }}
-            />
-          )}
-          {page + 1 === comments.length ? (
-            <div></div>
-          ) : (
-            <ContrastButton
-              text="次へ"
-              onClick={() => {
-                setPage(page + 1);
-              }}
-            />
           )}
         </div>
         <div id="comment" className="flex flex-col">
