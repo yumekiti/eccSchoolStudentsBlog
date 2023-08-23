@@ -9,9 +9,7 @@ type Props = {
 const Component: React.FC<Props> = ({ path }) => {
   const { data, error, size, setSize } = useSWRInfinite(
     (index) =>
-      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${
-        index + 1
-      }&access_token=${process.env.REACT_APP_API_TOKEN}`,
+      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${index + 1}`,
   );
 
   if (error) return <div>Error</div>;

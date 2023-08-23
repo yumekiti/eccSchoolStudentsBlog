@@ -8,9 +8,7 @@ type Props = {
 
 const Component: React.FC<Props> = ({ id }) => {
   const [tags, setTags] = React.useState([]);
-  const { data, error } = useSWR(
-    `/_api/pages.getPageTag?pageId=${id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
-  );
+  const { data, error } = useSWR(`/_api/pages.getPageTag?pageId=${id}`);
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;

@@ -22,9 +22,7 @@ const Component: React.FC<Props> = ({ id }) => {
   const [page, setPage] = useState<number>(0);
 
   // Fetch comments using SWR
-  const { data, error } = useSWR(
-    `/_api/comments.get?page_id=${id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
-  );
+  const { data, error } = useSWR(`/_api/comments.get?page_id=${id}`);
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;

@@ -50,10 +50,9 @@ const Component = () => {
                 />
               </div>
               <ContrastButton
-                text="Create Post"
+                text="Go to Wiki"
                 onClick={() =>
-                  (window.location.href =
-                    process.env.REACT_APP_API_URL + '/Blog')
+                  (window.location.href = process.env.REACT_APP_API_URL + '')
                 }
               />
             </div>

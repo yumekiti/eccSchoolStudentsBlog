@@ -28,9 +28,7 @@ const Component: React.FC<Props> = ({
   seenUsersCount,
 }) => {
   const userNavigate = useNavigate();
-  const { data, error } = useSWR(
-    `/_api/v3/users/list?userIds=${user_id}&access_token=${process.env.REACT_APP_API_TOKEN}`,
-  );
+  const { data, error } = useSWR(`/_api/v3/users/list?userIds=${user_id}`);
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;

@@ -4,9 +4,7 @@ import useSWR from 'swr';
 import LinkButton from '../atoms/LinkButton';
 
 const Component: React.FC = () => {
-  const { data, error } = useSWR(
-    `/_api/tags.list?access_token=${process.env.REACT_APP_API_TOKEN}`,
-  );
+  const { data, error } = useSWR(`/_api/tags.list`);
   const [tags, setTags] = useState([]);
 
   if (!data) return <p>Loading...</p>;
