@@ -21,7 +21,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<List path="content" />} />
         <Route path="/event" element={<List path="event/pre-event" />} />
-        <Route path="/question" element={<List path="question" />} />
+        <Route path="/question" element={<List path="question/unresolved" />} />
         <Route path="/recruitment" element={<List path="recruitment" />} />
         <Route path="/club" element={<List path="club" />} />
         <Route path="/contact" element={<List path="contact" />} />
