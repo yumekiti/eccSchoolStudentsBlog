@@ -42,7 +42,7 @@ const Component: React.FC<Props> = ({ content }) => {
               `}
               >
                 <a href={`#${header.id}`} className="hover:underline">
-                  {header.text}
+                  <p dangerouslySetInnerHTML={{ __html: header.text }} />
                 </a>
               </li>
             ))}
