@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 import BlogTagList from '../molecules/BlogTagList';
 import BlogInfo from '../molecules/BlogInfo';
@@ -46,6 +47,7 @@ const Component: React.FC<Props> = ({
       <div className="markdown-body py-12">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeRaw]}
           components={{
             h1: ({ node, ...props }) => (
               <h1 id={node.position?.start.line.toString()} {...props} />
