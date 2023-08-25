@@ -23,12 +23,12 @@ const Component: React.FC<Props> = ({
       alt="user"
       className="w-8 h-8 rounded-full"
     />
-    <div className="flex flex-col text-SubHeadline text-xs md:text-sm">
+    <div className="flex flex-col text-SubHeadline text-xs md:text-sm justify-center items-start">
       <Link
         to={`${process.env.REACT_APP_API_URL}/user/${user_id}`}
         className="hover:underline"
       >
-        <p className="px-1 w-fit font-bold tracking-wide">
+        <p className="px-1 font-bold tracking-wide">
           @{user_id}&nbsp;({user_name})
         </p>
       </Link>

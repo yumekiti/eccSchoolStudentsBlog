@@ -51,9 +51,9 @@ const Component = () => {
               </div>
               <ContrastButton
                 text="Go to Wiki"
-                onClick={() =>
-                  (window.location.href = process.env.REACT_APP_API_URL + '')
-                }
+                onClick={() => {
+                  window.open(process.env.REACT_APP_API_URL);
+                }}
               />
             </div>
           </div>
