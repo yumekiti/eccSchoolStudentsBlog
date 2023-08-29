@@ -4,8 +4,6 @@ import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { fetchInstance } from '../../libs/fetchInstance';
-
 import ContrastButton from '../atoms/ContrastButton';
 
 import { Comment } from '../../types/comment';
@@ -15,8 +13,6 @@ type Props = {
 };
 
 const Component: React.FC<Props> = ({ id }) => {
-  // State for handling comments and user input
-  const [comment, setComment] = useState('');
   const [comments, setComments] = useState<Comment[][]>([]);
   const [commentCount, setCommentCount] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
@@ -36,38 +32,6 @@ const Component: React.FC<Props> = ({ id }) => {
     setComments(newComments);
     setCommentCount(data.comments.length);
   }
-
-  // Add a new comment
-  const handleComment = () => {
-    const requestData = {
-      access_token: process.env.REACT_APP_API_TOKEN,
-      commentForm: {
-        page_id: id,
-        comment: comment,
-      },
-    };
-
-    fetchInstance()
-      .post('/_api/comments.add', requestData)
-      .then((res) => {
-        if (comments.length === 0) {
-          setComments([[res.data.comment]]);
-          setComment('');
-          setPage(0);
-          return;
-        } else {
-          setComments([
-            [res.data.comment, ...comments[0]],
-            ...comments.slice(1),
-          ]);
-        }
-        setComment('');
-        setPage(0);
-      })
-      .catch((error) => {
-        console.error('Error adding comment:', error);
-      });
-  };
 
   return (
     <div className="py-2">
@@ -102,7 +66,7 @@ const Component: React.FC<Props> = ({ id }) => {
                   <div></div>
                 ) : (
                   <ContrastButton
-                    text="前へ"
+                    text="次へ"
                     onClick={() => {
                       setPage(page - 1);
                     }}
@@ -112,7 +76,7 @@ const Component: React.FC<Props> = ({ id }) => {
                   <div></div>
                 ) : (
                   <ContrastButton
-                    text="次へ"
+                    text="前へ"
                     onClick={() => {
                       setPage(page + 1);
                     }}
@@ -125,18 +89,6 @@ const Component: React.FC<Props> = ({ id }) => {
               この記事にコメントはありません。
             </p>
           )}
-        </div>
-        <div id="comment" className="flex flex-col">
-          <textarea
-            className="border border-SubHeadline rounded p-2"
-            rows={5}
-            placeholder="コメントを入力してください。"
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <div className="flex justify-end mt-4">
-            <ContrastButton text="コメントする" onClick={handleComment} />
-          </div>
         </div>
       </div>
     </div>

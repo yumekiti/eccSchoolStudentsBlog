@@ -22,12 +22,12 @@ const Component: React.FC<Props> = ({ id, like, comment }) => (
       <span className="mt-1 text-Contrast">{like}</span>
     </li>
     <li className="flex md:flex-col items-center">
-      <a
-        href="#comment"
+      <Link
+        to={process.env.REACT_APP_API_URL + `/${id}#comments-container`}
         className="bg-Main rounded-full p-3 duration-200 hover:bg-opacity-60"
       >
         <CommentIcon />
-      </a>
+      </Link>
       <span className="mt-1 text-Contrast">{comment}</span>
     </li>
   </ul>

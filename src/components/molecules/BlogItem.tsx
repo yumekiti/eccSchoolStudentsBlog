@@ -7,6 +7,7 @@ import BlogTagList from './BlogTagList';
 import BlogInfo from './BlogInfo';
 
 type Props = {
+  path: string;
   id: string;
   user_id: string;
   created_at: Date;
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const Component: React.FC<Props> = ({
+  path,
   id,
   user_id,
   created_at,
@@ -33,7 +35,7 @@ const Component: React.FC<Props> = ({
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
-  const handleClick = () => userNavigate(`/content/${id}`);
+  const handleClick = () => userNavigate(`/${path}/${id}`);
 
   return (
     <button onClick={handleClick} className="w-full">

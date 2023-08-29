@@ -19,18 +19,21 @@ const App = () => {
       }}
     >
       <Routes>
-        <Route path="/" element={<List path="content" />} />
-        <Route path="/event" element={<List path="event/pre-event" />} />
-        <Route path="/question" element={<List path="question/unresolved" />} />
-        <Route path="/recruitment" element={<List path="recruitment" />} />
-        <Route path="/club" element={<List path="club" />} />
-        <Route path="/contact" element={<List path="contact" />} />
+        <Route path="/" element={<List path="contents" />} />
+        <Route path="/events" element={<List path="events/pre-event" />} />
+        <Route
+          path="/questions"
+          element={<List path="questions/unresolved" />}
+        />
+        <Route path="/requests" element={<List path="requests" />} />
+        <Route path="/clubs" element={<List path="clubs" />} />
+        <Route path="/contacts" element={<List path="contacts" />} />
         {/* カテゴリ */}
-        <Route path="/it" element={<List path="content/it" />} />
-        <Route path="/game" element={<List path="content/game" />} />
-        <Route path="/web" element={<List path="content/web" />} />
+        <Route path="/it" element={<List path="contents/it" />} />
+        <Route path="/game" element={<List path="contents/game" />} />
+        <Route path="/web" element={<List path="contents/web" />} />
         {/* 詳細ページ */}
-        <Route path="/content/:id" element={<Detail />} />
+        <Route path="/contents/:id" element={<Detail />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </SWRConfig>

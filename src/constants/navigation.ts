@@ -1,9 +1,3 @@
-// <Route path="/" element={<List path="content" />} />
-// <Route path="/event" element={<List path="event" />} />
-// <Route path="/question" element={<List path="question" />} />
-// <Route path="/recruitment" element={<List path="recruitment" />} />
-// <Route path="/club" element={<List path="club" />} />
-
 const navigation = [
   {
     emoji: '🏠',
@@ -14,31 +8,31 @@ const navigation = [
   {
     text: 'イベント',
     emoji: '🎉',
-    path: '/event',
+    path: '/events',
     bold: true,
   },
   {
     text: '質問',
     emoji: '❓',
-    path: '/question',
+    path: '/questions',
     bold: true,
   },
   {
     text: '募集',
     emoji: '📢',
-    path: '/recruitment',
+    path: '/requests',
     bold: true,
   },
   {
     text: '部活',
     emoji: '🏀',
-    path: '/club',
+    path: '/clubs',
     bold: true,
   },
   {
     text: 'お問い合わせ',
     emoji: '📧',
-    path: '/contact',
+    path: '/contacts',
     bold: true,
   },
 ];
