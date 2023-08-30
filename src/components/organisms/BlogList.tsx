@@ -45,7 +45,7 @@ const Component: React.FC<Props> = ({ path }) => {
       {pages.map((page, index) => (
         <div className="py-2" key={index}>
           <BlogItem
-            path={path}
+            path={path.split('/')[0]}
             id={page._id}
             user_id={page.creator}
             created_at={new Date(page.createdAt)}

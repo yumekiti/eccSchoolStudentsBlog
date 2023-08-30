@@ -6,7 +6,6 @@ import { fetchInstance } from './libs/fetchInstance';
 
 import List from './components/pages/List';
 import Detail from './components/pages/Detail';
-import NotFound from './components/pages/NotFound';
 
 const App = () => {
   return (
@@ -33,8 +32,7 @@ const App = () => {
         <Route path="/game" element={<List path="contents/game" />} />
         <Route path="/web" element={<List path="contents/web" />} />
         {/* 詳細ページ */}
-        <Route path="/contents/:id" element={<Detail />} />
-        <Route path="/*" element={<NotFound />} />
+        <Route path="/:path/:id" element={<Detail />} />
       </Routes>
     </SWRConfig>
   );
