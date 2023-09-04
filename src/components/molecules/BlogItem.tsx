@@ -35,8 +35,6 @@ const Component: React.FC<Props> = ({
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
-  console.log(data);
-
   const handleClick = () => userNavigate(`/${path}/${id}`);
 
   return (
