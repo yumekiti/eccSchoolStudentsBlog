@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
@@ -17,4 +17,4 @@ const Component: React.FC<Props> = ({ children }) => {
   );
 };
 
-export default Component;
+export default memo(Component);

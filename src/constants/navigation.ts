@@ -84,15 +84,27 @@ const links = [
     bold: false,
   },
   {
+    text: 'Diff_Sync_Code',
+    emoji: '🔀',
+    path: 'https://diff.yumekiti.net/',
+    bold: false,
+  },
+  {
+    text: 'Slide_Sync',
+    emoji: '📱',
+    path: 'https://chrome.google.com/webstore/detail/slide-sync/naimcoenmacdfkjnhphjgikaigaedgae?hl=ja&authuser=0',
+    bold: false,
+  },
+  {
     text: 'Marplify',
     emoji: '📊',
-    path: 'http://marplify.yumekiti.net/',
+    path: 'https://marplify.yumekiti.net/',
     bold: false,
   },
   {
     text: 'Mdcal',
     emoji: '📅',
-    path: 'http://mdcal.yumekiti.net/',
+    path: 'https://mdcal.yumekiti.net/',
     bold: false,
   },
 ];
