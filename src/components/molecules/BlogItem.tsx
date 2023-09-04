@@ -35,14 +35,16 @@ const Component: React.FC<Props> = ({
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
+  console.log(data);
+
   const handleClick = () => userNavigate(`/${path}/${id}`);
 
   return (
     <button onClick={handleClick} className="w-full">
       <div className="bg-Main p-4 rounded hover:cursor-pointer group">
         <BlogInfo
-          user_id={data.users[0].name || 'unknown'}
-          user_name={data.users[0].username || 'unknown'}
+          user_id={data.users[0].username || 'unknown'}
+          user_name={data.users[0].name || 'unknown'}
           user_image={data.users[0].imageUrlCached || '/images/icons/user.svg'}
           updated_at={updated_at}
           created_at={created_at}
