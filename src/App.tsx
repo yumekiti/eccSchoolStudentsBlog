@@ -19,11 +19,8 @@ const App = () => {
     >
       <Routes>
         <Route path="/" element={<List path="contents" />} />
-        <Route path="/events" element={<List path="events/pre-event" />} />
-        <Route
-          path="/questions"
-          element={<List path="questions/unresolved" />}
-        />
+        <Route path="/events" element={<List path="events" />} />
+        <Route path="/questions" element={<List path="questions" />} />
         <Route path="/requests" element={<List path="requests" />} />
         <Route path="/clubs" element={<List path="clubs" />} />
         <Route path="/contacts" element={<List path="contacts" />} />
