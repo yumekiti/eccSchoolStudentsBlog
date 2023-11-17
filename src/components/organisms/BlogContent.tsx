@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw';
 
 import BlogTagList from '../molecules/BlogTagList';
 import BlogInfo from '../molecules/BlogInfo';
+import CodeBlock from '../molecules/CodeBlock';
 
 type Props = {
   id: string;
@@ -67,6 +68,7 @@ const Component: React.FC<Props> = ({
             h6: ({ node, ...props }) => (
               <h6 id={node.position?.start.line.toString()} {...props} />
             ),
+            code: CodeBlock,
           }}
         >
           {content}
