@@ -24,7 +24,7 @@ const Component: React.FC<Props> = ({ content }) => {
           </span>
         </div>
         <div className="mt-2 text-justify whitespace-pre-wrap text-SubHeadline px-8">
-          <ul className="list-disc">
+          <ul className="list-disc break-all">
             {headers.map((header, index) => (
               <li
                 key={index}
