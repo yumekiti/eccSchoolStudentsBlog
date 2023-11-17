@@ -30,11 +30,12 @@ const Component: React.FC<Props> = ({ path }) => {
       const title = getTitle(page.path);
       if (title === '__template') return false;
       if (title === '_template') return false;
+      if (title === 'template') return false;
 
       return title;
     });
-  const isLast =
-    pages.length === data[0].totalCount - (data[0].totalCount - pages.length);
+  const isLast = data[0].pages.length !== data[0].limit && data[0];
+  console.log(data[0].totalCount, data[0]);
 
   const handleMore = () => {
     setSize(size + 1);
