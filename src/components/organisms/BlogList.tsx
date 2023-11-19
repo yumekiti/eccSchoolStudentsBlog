@@ -34,8 +34,9 @@ const Component: React.FC<Props> = ({ path }) => {
 
       return title;
     });
-  const isLast = data[0].pages.length !== data[0].limit && data[0];
-  console.log(data[0].totalCount, data[0]);
+  const isLast =
+    data[0].pages.length !== data[0].limit ||
+    (size !== 1 && data[0].totalCount <= data[0].limit * size);
 
   const handleMore = () => {
     setSize(size + 1);
