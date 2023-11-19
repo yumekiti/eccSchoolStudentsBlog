@@ -12,7 +12,7 @@ const CodeBlock: CodeComponent = ({ inline, className, children }) => {
   const lang = match && match[1] ? match[1] : '';
 
   return (
-    <SyntaxHighlighter style={nightOwl} language={lang} showLineNumbers={true}>
+    <SyntaxHighlighter style={nightOwl} language={lang}>
       {String(children).replace(/\n$/, '')}
     </SyntaxHighlighter>
   );
