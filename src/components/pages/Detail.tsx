@@ -9,12 +9,14 @@ import BlogContent from '../organisms/BlogContent';
 import ContentList from '../organisms/ContentList';
 import CommentList from '../organisms/CommentList';
 
+import Loading from '../pages/Loading';
+
 const Component = () => {
   const { id } = useParams<{ id: string }>();
   const { data, error } = useSWR(`_api/v3/page?pageId=${id}`);
 
   if (error) return <div>Error</div>;
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <Loading />;
 
   const splitedPath = data.page.path.split('/').slice(-1);
   const splitedUnderline = splitedPath[0].split('_');
