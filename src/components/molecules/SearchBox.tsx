@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import SearchIcon from './../../assets/elements/SearchIcon';
 import SearchIconFocus from './../../assets/elements/SearchIconFocus';
 
 const Component: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const q = searchParams.get('q') || '';
   const userNavigate = useNavigate();
-  const [searchText, setSearchText] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>(q);
 
   const handleSearch = () => {
     if (searchText === '') return;

@@ -1,6 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import Twemoji from 'react-twemoji';
+import { Link } from 'react-router-dom';
 
 type Props = {
   id: string;
@@ -28,9 +29,7 @@ const Component: React.FC<Props> = ({ id }) => {
             key={index}
             className="mr-1 text-SubHeadline hover:underline hover:bg-SubHeadline hover:bg-opacity-10 rounded p-1 text-xs md:text-sm hover:outline outline-1 outline-SubHeadline"
           >
-            <a href={process.env.REACT_APP_API_URL + `/_search?q=tag%3A${tag}`}>
-              #{tag}
-            </a>
+            <Link to={`/search?q=tag%3A${tag}`}>#{tag}</Link>
           </li>
         ))}
       </ul>

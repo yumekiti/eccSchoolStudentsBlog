@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useSWR from 'swr';
+import { Link } from 'react-router-dom';
 
 import LinkButton from '../atoms/LinkButton';
 
@@ -25,12 +26,9 @@ const Component: React.FC = () => {
           (tag: { name: string }, index: number) =>
             index < 8 && (
               <li key={index} className="flex items-center">
-                <a
-                  href={`${process.env.REACT_APP_API_URL}/_search?q=tag%3A${tag.name}`}
-                  className="w-full"
-                >
+                <Link to={`/search?q=tag%3A${tag.name}`} className="w-full">
                   <LinkButton emoji="🏷️" text={`# ${tag.name}`} />
-                </a>
+                </Link>
               </li>
             ),
         )}
