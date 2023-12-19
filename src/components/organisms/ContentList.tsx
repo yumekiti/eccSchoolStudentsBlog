@@ -1,7 +1,7 @@
 import React from 'react';
 import Twemoji from 'react-twemoji';
 
-import { extractHeadersFromMarkdown } from '../../libs/markdown';
+import { extractHeadersFromMarkdown } from '../../utils/markdown';
 
 type Props = {
   content: string;

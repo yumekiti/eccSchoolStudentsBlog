@@ -1,40 +1,30 @@
 import React from 'react';
 import useSWRInfinite from 'swr/infinite';
+import { useSearchParams } from 'react-router-dom';
 
 import Welcome from '../organisms/Welcome';
 import RelatedLinks from '../organisms/RelatedLinks';
 import BlogList from '../organisms/BlogList';
 import NavigationMenu from '../molecules/NavigationMenu';
 
-import Loading from '../pages/Loading';
-
 import Layout from '../templates/Layout';
 
-import { getTitle } from '../../utils/format';
+import Loading from '../pages/Loading';
 
-type Props = {
-  path: string;
-};
+import { SearchData } from '../../types/searchData';
 
-const Component: React.FC<Props> = ({ path }) => {
+const Component: React.FC = () => {
+  const [searchParams] = useSearchParams();
+  const q = searchParams.get('q') || '';
   const { data, error, size, setSize } = useSWRInfinite(
-    (index) =>
-      `/_api/v3/pages/list?path=%2Fblog%2F${path}&limit=8&page=${index + 1}`,
+    (index) => `/_api/search?path=%2F&limit=8&page=${index + 1}&q=${q}`,
   );
 
+  if (q === '') return <div>検索キーワードを入力してください</div>;
   if (error) return <div>Error</div>;
   if (!data) return <Loading />;
 
-  const pages = data
-    .flatMap((page) => page.pages)
-    .filter((page) => {
-      const title = getTitle(page.path);
-      if (title === '__template') return false;
-      if (title === '_template') return false;
-      if (title === 'template') return false;
-
-      return title;
-    });
+  const pages = data[0].data.map((page: SearchData) => page.data);
 
   return (
     <Layout>
@@ -44,14 +34,7 @@ const Component: React.FC<Props> = ({ path }) => {
             <NavigationMenu />
           </div>
           <div className="col-span-12 md:col-span-9 lg:col-span-7 mb-12">
-            <BlogList
-              length={data[0].pages.length}
-              limit={data[0].limit}
-              totalCount={data[0].totalCount}
-              size={size}
-              setSize={setSize}
-              pages={pages}
-            />
+            <BlogList size={size} setSize={setSize} pages={pages} />
           </div>
 
           <div className="hidden lg:col-span-3 lg:block">

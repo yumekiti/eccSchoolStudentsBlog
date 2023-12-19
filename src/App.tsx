@@ -2,10 +2,11 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { SWRConfig } from 'swr';
-import { fetchInstance } from './libs/fetchInstance';
+import { fetchInstance } from './utils/fetchInstance';
 
 import List from './components/pages/List';
 import Detail from './components/pages/Detail';
+import Search from './components/pages/Search';
 
 const App = () => {
   return (
@@ -29,7 +30,9 @@ const App = () => {
         <Route path="/game" element={<List path="contents/game" />} />
         <Route path="/web" element={<List path="contents/web" />} />
         {/* 詳細ページ */}
-        <Route path="/:path/:id" element={<Detail />} />
+        <Route path="/:id" element={<Detail />} />
+        {/* 検索 */}
+        <Route path="/search" element={<Search />} />
       </Routes>
     </SWRConfig>
   );

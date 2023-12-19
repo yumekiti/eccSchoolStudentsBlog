@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import SearchIcon from './../../assets/elements/SearchIcon';
 import SearchIconFocus from './../../assets/elements/SearchIconFocus';
 
 const Component: React.FC = () => {
+  const userNavigate = useNavigate();
   const [searchText, setSearchText] = useState<string>('');
 
   const handleSearch = () => {
-    window.location.href =
-      process.env.REACT_APP_API_URL + `/_search?q=${searchText}`;
+    if (searchText === '') return;
+    userNavigate(`/search?q=${searchText}`);
   };
 
   return (

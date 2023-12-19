@@ -7,7 +7,6 @@ import BlogTagList from './BlogTagList';
 import BlogInfo from './BlogInfo';
 
 type Props = {
-  path: string;
   id: string;
   user_id: string;
   created_at: Date;
@@ -19,7 +18,6 @@ type Props = {
 };
 
 const Component: React.FC<Props> = ({
-  path,
   id,
   user_id,
   created_at,
@@ -30,20 +28,22 @@ const Component: React.FC<Props> = ({
   seenUsersCount,
 }) => {
   const userNavigate = useNavigate();
-  const { data, error } = useSWR(`/_api/v3/users/list?userIds=${user_id}`);
+  const { data, error } = useSWR(
+    `/_api/v3/users/list?userIds=${user_id || ''}`,
+  );
 
   if (error) return <div>Error</div>;
   if (!data) return <div>Loading...</div>;
 
-  const handleClick = () => userNavigate(`/${path}/${id}`);
+  const handleClick = () => userNavigate(`/${id}`);
 
   return (
     <button onClick={handleClick} className="w-full">
       <div className="bg-Main p-4 rounded hover:cursor-pointer group">
         <BlogInfo
-          user_id={data.users[0].username || 'unknown'}
-          user_name={data.users[0].name || 'unknown'}
-          user_image={data.users[0].imageUrlCached || '/images/icons/user.svg'}
+          user_id={data.users[0]?.username || 'unknown'}
+          user_name={data.users[0]?.name || 'unknown'}
+          user_image={data.users[0]?.imageUrlCached || '/images/icons/user.svg'}
           updated_at={updated_at}
           created_at={created_at}
         />

@@ -38,10 +38,10 @@ const Component = () => {
           <div className="col-span-12 md:col-span-9 lg:col-span-8 mb-12">
             <BlogContent
               id={data.page._id}
-              user_id={data.page.creator.username || 'unknown'}
-              user_name={data.page.creator.name || 'unknown'}
+              user_id={data.page.creator?.username || 'unknown'}
+              user_name={data.page.creator?.name || 'unknown'}
               user_image={
-                data.page.creator.imageUrlCached || '/images/icons/user.svg'
+                data.page.creator?.imageUrlCached || '/images/icons/user.svg'
               }
               created_at={new Date(data.page.createdAt)}
               updated_at={new Date(data.page.updatedAt)}
