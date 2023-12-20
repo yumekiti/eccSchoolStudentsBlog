@@ -1,11 +1,13 @@
 export type Page = {
   _id: string;
-  creator: {
-    _id: string;
-    username: string;
-    name: string;
-    imageUrlCached: string;
-  };
+  creator:
+    | {
+        _id: string;
+        username: string;
+        name: string;
+        imageUrlCached: string;
+      }
+    | string;
   createdAt: string;
   updatedAt: string;
   path: string;

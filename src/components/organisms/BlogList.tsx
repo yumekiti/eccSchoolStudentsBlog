@@ -36,7 +36,9 @@ const Component: React.FC<Props> = ({
         <div className="py-2" key={index}>
           <BlogItem
             id={page._id}
-            user_id={page.creator?._id}
+            user_id={
+              typeof page.creator === 'object' ? page.creator._id : page.creator
+            }
             created_at={new Date(page.createdAt)}
             updated_at={new Date(page.updatedAt)}
             title={getTitle(page.path)}
