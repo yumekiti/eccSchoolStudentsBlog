@@ -12,19 +12,31 @@ import Layout from '../templates/Layout';
 import Loading from '../pages/Loading';
 
 import { SearchData } from '../../types/searchData';
+import { Page } from '../../types/page';
+
+import { getTitle } from '../../utils/format';
 
 const Component: React.FC = () => {
   const [searchParams] = useSearchParams();
   const q = searchParams.get('q') || '';
   const { data, error, size, setSize } = useSWRInfinite(
-    (index) => `/_api/search?path=%2F&limit=8&page=${index + 1}&q=${q}`,
+    (index) => `/_api/search?path=%2Fblog%2F&limit=8&page=${index + 1}&q=${q}`,
   );
 
   if (q === '') return <div>検索キーワードを入力してください</div>;
   if (error) return <div>Error</div>;
   if (!data) return <Loading />;
 
-  const pages = data[0].data.map((page: SearchData) => page.data);
+  const pages = data[0].data
+    .flatMap((page: SearchData) => page.data)
+    .filter((page: Page) => {
+      const title = getTitle(page.path);
+      if (title === '__template') return false;
+      if (title === '_template') return false;
+      if (title === 'template') return false;
+
+      return title;
+    });
 
   return (
     <Layout>
