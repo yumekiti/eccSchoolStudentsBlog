@@ -10,12 +10,13 @@ import ContentList from '../organisms/ContentList';
 import CommentList from '../organisms/CommentList';
 
 import Loading from '../pages/Loading';
+import NotFond from '../pages/NotFound';
 
 const Component = () => {
   const { id } = useParams<{ id: string }>();
   const { data, error } = useSWR(`_api/v3/page?pageId=${id}`);
 
-  if (error) return <div>Error</div>;
+  if (error) return <NotFond />;
   if (!data) return <Loading />;
 
   const splitedPath = data.page.path.split('/').slice(-1);
