@@ -72,19 +72,20 @@ export const formatTableTime = (content: string) => {
       const isTime = line.indexOf(':') !== -1;
 
       if (isTime) {
+        const now = new Date();
+        const date = `${now.getFullYear()}/${
+          now.getMonth() + 1
+        }/${now.getDate()}`;
+
         // 17:00 ~ 19:50 などの場合、今の時間の範囲をわかりやすく表示する
         const timeRange = line.split('~');
-        const startTime = timeRange[0].replace(' ', '').replace('|', '').trim(); // 17:00
-        const endTime = timeRange[1].replace(' ', '').split('|')[0].trim(); // 19:50
+        const start = timeRange[0].replace(' ', '').replace('|', '').trim();
+        const end = timeRange[1].replace(' ', '').split('|')[0].trim();
+        const startTime = new Date(`${date} ${start}`); // 17:00
+        const endTime = new Date(`${date} ${end}`); // 19:50
 
-        const now = new Date();
-        const nowTime = `${now.getHours()}:${now.getMinutes()}`;
-
-        if (startTime <= nowTime && nowTime >= endTime) {
-          line = line.replace(
-            `${startTime} ~ ${endTime}`,
-            `**${startTime} ~ ${endTime}**`,
-          );
+        if (startTime <= now && now <= endTime) {
+          line = line.replace(`${start} ~ ${end}`, `**${start} ~ ${end}**`);
         }
       }
     }
