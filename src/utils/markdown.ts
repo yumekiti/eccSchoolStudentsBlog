@@ -16,7 +16,15 @@ export const extractHeadersFromMarkdown = (markdownText: string) => {
       const headingMatch = line.match(/^(#+)\s+(.*)/);
       if (headingMatch) {
         const headingLevel = headingMatch[1].length;
-        const headingText = headingMatch[2].trim();
+        let headingText = headingMatch[2].trim();
+
+        if (
+          headingText.startsWith('date_') ||
+          headingText.startsWith('time_')
+        ) {
+          headingText = headingText.replace('date_', '').replace('time_', '');
+        }
+
         headers.push({
           level: headingLevel,
           text: headingText,

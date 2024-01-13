@@ -6,7 +6,11 @@ import rehypeRaw from 'rehype-raw';
 import BlogTagList from '../molecules/BlogTagList';
 import BlogInfo from '../molecules/BlogInfo';
 import CodeBlock from '../molecules/CodeBlock';
-import { formatTableDate, formatTableTime } from '../../utils/format';
+import {
+  formatTableDate,
+  formatTableTime,
+  formatVariable,
+} from '../../utils/format_content';
 
 type Props = {
   id: string;
@@ -35,6 +39,7 @@ const Component: React.FC<Props> = ({
     let formatted = '';
     formatted = formatTableDate(content);
     formatted = formatTableTime(formatted);
+    formatted = formatVariable(formatted);
     setFormattedContent(formatted);
   }, [content]);
 
