@@ -75,12 +75,12 @@ export const formatTableTime = (content: string) => {
         // 17:00 ~ 19:50 などの場合、今の時間の範囲をわかりやすく表示する
         const timeRange = line.split('~');
         const startTime = timeRange[0].replace(' ', '').replace('|', '').trim(); // 17:00
-        const endTime = timeRange[1].replace(' ', '').replace('|', '').trim(); // 19:50
+        const endTime = timeRange[1].replace(' ', '').split('|')[0].trim(); // 19:50
 
         const now = new Date();
         const nowTime = `${now.getHours()}:${now.getMinutes()}`;
 
-        if (startTime <= nowTime && nowTime <= endTime) {
+        if (startTime <= nowTime && nowTime >= endTime) {
           line = line.replace(
             `${startTime} ~ ${endTime}`,
             `**${startTime} ~ ${endTime}**`,
